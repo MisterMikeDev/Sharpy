@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model UserXp {
+  id             String   @id
+  xp             Int      @default(0)
+  xpForNextLevel Int      @default(100)
+  level          Int      @default(1)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Tickets {
+  id             String             @id @default(cuid())
+  authorId       String             @unique
+  messageId      String             @unique
+  channelId      String             @unique
+  affaire        String
+  staffIdClaimed String?
+  resolution     TicketsResolution? @relation
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+}
+
+model TicketsResolution {
+  id        String   @id @default(cuid())
+  ticket    Tickets  @relation(fields: [ticketId], references: [id])
+  ticketId  String   @unique
+  staffId   String?
+  reason    String
+  closedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Suggestions {
+  id         String   @id @default(cuid())
+  authorId   String
+  messageId  String   @unique
+  suggestion String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  votes Votes[]
+}
+
+model Votes {
+  id           String   @id @default(cuid())
+  suggestionId String
+  userId       String
+  vote         Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  suggestion Suggestions @relation(fields: [suggestionId], references: [id], onDelete: Cascade)
+}
+
+model Replic {
+  id           String        @id @default(cuid())
+  channelId    String
+  messageId    String
+  participant1 String?
+  participant2 String?
+  participant3 String?
+  participant4 String?
+  votes        ReplicVotes[]
+  replicStatus Int           @default(0)
+  currentTurn  Int           @default(1) // 1, 2, 3, 4
+  winnerId     String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model ReplicVotes {
+  id        String   @id @default(cuid())
+  replic    Replic   @relation(fields: [replicId], references: [id], onDelete: Cascade)
+  replicId  String
+  userId    String
+  voteFor   Int
+  weight    Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blacklist {
+  id        String   @id @default(cuid())
+  userId    String
+  reason    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
