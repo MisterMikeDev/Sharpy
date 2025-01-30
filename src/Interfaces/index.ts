@@ -11,3 +11,4 @@ export { SlashCommandStructure } from "./SlashCommands/SlashCommand";
 export { StaffCategory } from "./Other/StaffCategory";
 export { Ticket, TicketResolution } from "./Other/Tickets";
 export { UserData } from "./Other/UserData";
+export { UserVoiceChannel } from "./Other/UserVoiceChannel";

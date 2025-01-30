@@ -1,5 +1,10 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
-import { ColorData, HobbiesData, MusicGenreData } from "../../../Data/Data";
+import {
+    ColorData,
+    HobbiesData,
+    MusicGenreData,
+    MusicalSpecialistData
+} from "../../../Data/Data";
 
 function generateActionRows(
     data: Array<{ label: string; emoji: string; buttonId: string }>
@@ -23,5 +28,6 @@ function generateActionRows(
 }
 
 export const ColorActionRows = generateActionRows(ColorData);
+export const MusicalSpecialistActionRows = generateActionRows(MusicalSpecialistData);
 export const HobbiesActionRows = generateActionRows(HobbiesData);
 export const MusicGenreActionRows = generateActionRows(MusicGenreData);

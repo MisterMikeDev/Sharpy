@@ -1,7 +1,8 @@
 export {
     AutoRoleColorEmbed,
     AutoRoleHobbiesEmbed,
-    AutoRoleMusicalGenderEmbed
+    AutoRoleMusicalGenderEmbed,
+    AutoRoleMusicalSpecialistEmbed
 } from "./Autoroles";
 export { BoostMessageEmbed } from "./BoostMessage";
 export { DuelEmbed } from "./Duel";
@@ -37,3 +38,5 @@ export {
 export { ManualEmbed } from "./ManualEmbed";
 export { ManualEventEmbed } from "./ManualEventEmbed";
 export { InfoRockolaEmbed } from "./InfoRockolaEmbed";
+export { SharpyInfo } from "./SharpyInfo";
+export { InfoKaraoke } from "./InfoKaraoke";

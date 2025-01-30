@@ -6,6 +6,7 @@ import { SlashCommandStructure } from "../../Interfaces";
 import { Emojis } from "../../Data/Emojis";
 import { StaffCommand } from "./Staff.cmd";
 import { StaffCategory } from "../../Interfaces/Other/StaffCategory";
+import { StatsCommand } from "./Stats.cmd";
 const { Subcommand } = ApplicationCommandOptionType;
 
 export default new SlashCommandStructure({
@@ -13,6 +14,11 @@ export default new SlashCommandStructure({
     description: "Sub SlashCommands de Informacion.",
     usage: "/info <subcommand>",
     options: [
+        {
+            name: "stats",
+            description: "Muestra tus estadísticas en el servidor.",
+            type: Subcommand
+        },
         {
             name: "staff",
             description: "Muestra los integrantes del staff de cada categoría.",
@@ -68,6 +74,7 @@ export default new SlashCommandStructure({
         const Int = interaction.options as CommandInteractionOptionResolver;
         const subCommand = Int.getSubcommand();
         const IntMap = {
+            stats: async () => await StatsCommand({ Sharpy, interaction }),
             staff: async () =>
                 await StaffCommand({
                     Sharpy,

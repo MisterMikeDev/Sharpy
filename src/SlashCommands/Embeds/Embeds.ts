@@ -32,6 +32,8 @@ import { ManualJuradoEmbedCommand } from "./ManualJuradoEmbed.cmd";
 import { ManualEventEmbedCommand } from "./ManualEventsCommand.cmd";
 import { InfoRockolaEmbedCommand } from "./InfoRockola.cmd";
 import { AutorolesCommand } from "./Autoroles.cmd";
+import { SharpyInfoCommand } from "./SharpyInfo.cmd";
+import { InfoKaraokeCommand } from "./InfoKaraoke.cmd";
 const { Subcommand, String } = ApplicationCommandOptionType;
 
 export default new SlashCommandStructure({
@@ -137,6 +139,14 @@ export default new SlashCommandStructure({
                         {
                             name: "Información de Rockola",
                             value: "info-rockola"
+                        },
+                        {
+                            name: "Información de Sharpy",
+                            value: "info-sharpy"
+                        },
+                        {
+                            name: "Información de Karaoke",
+                            value: "info-karaoke"
                         }
                     ]
                 }
@@ -276,7 +286,11 @@ export default new SlashCommandStructure({
                     "manual-event": async () =>
                         await ManualEventEmbedCommand({ Sharpy, interaction }),
                     "info-rockola": async () =>
-                        await InfoRockolaEmbedCommand({ Sharpy, interaction })
+                        await InfoRockolaEmbedCommand({ Sharpy, interaction }),
+                    "info-sharpy": async () =>
+                        await SharpyInfoCommand({ Sharpy, interaction }),
+                    "info-karaoke": async () =>
+                        await InfoKaraokeCommand({ Sharpy, interaction })
                 }[embed as keyof typeof CommandToExecute];
                 if (CommandToExecute) await CommandToExecute();
                 else await interaction.followUp("No se ha encontrado el embed.");

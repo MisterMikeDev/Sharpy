@@ -414,6 +414,173 @@ export const InfoRockola = {
     ]
 };
 
+// Info para el embed de Sharpy
+export const SharpyInfoData = {
+    title: `# ${Emojis.Util.Bot} Presentación de Sharpy ${Emojis.Echo.VinylRecord}`,
+    description: `¡Hola! Soy **Sharpy**, un bot de Discord diseñado exclusivamente para **Echoes Of Talent**, una comunidad dedicada a la música y el talento vocal. Creado por <@${Config.DiscordBot.IdAuthor}>, Sharpy no solo ofrece herramientas esenciales para la administración, sino también dinámicas únicas que enriquecen la experiencia musical y social en el servidor.`,
+    color: "#550000" as ColorResolvable,
+    emojiNumbers: {
+        $0$: Emojis.Echo.MinecraftGoldZero,
+        $1$: Emojis.Echo.MinecraftGoldOne,
+        $2$: Emojis.Echo.MinecraftGoldTwo,
+        $3$: Emojis.Echo.MinecraftGoldThree,
+        $4$: Emojis.Echo.MinecraftGoldFour,
+        $5$: Emojis.Echo.MinecraftGoldFive,
+        $6$: Emojis.Echo.MinecraftGoldSix,
+        $7$: Emojis.Echo.MinecraftGoldSeven
+    },
+    sections: [
+        {
+            title: "¿Qué puede hacer Sharpy?",
+            prefix: `${Emojis.Echo.ArrowBlue} `,
+            fields: [
+                {
+                    name: "Sistemas básicos para la comunidad",
+                    prefix: `${Emojis.Echo.AnimatedArrowPurple} `,
+                    values: [
+                        "**Bienvenidas y despedidas** personalizadas para nuevos miembros.",
+                        "**Autoroles** para asignar roles automáticamente.",
+                        "**Gestión de tickets** para un soporte eficiente.",
+                        "**Automod** para mantener el orden de manera automática.",
+                        "**Comandos de moderación**, como ban, kick, mute, entre otros."
+                    ]
+                },
+                {
+                    name: "Herramientas para el staff",
+                    prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
+                    values: [
+                        "**Creación de embeds personalizados**, ideales para anuncios y presentaciones.",
+                        "**Detención de spam** para evitar la saturación de mensajes.",
+                        "**Sistema de advertencias** para moderar el comportamiento de los usuarios.",
+                        "**Sistema de sanciones** para aplicar medidas disciplinarias.",
+                        "**Sistema de logs** para registrar las acciones del servidor."
+                    ]
+                },
+                {
+                    name: "Dinámicas exclusivas de karaoke",
+                    prefix: `${Emojis.Echo.AnimatedArrowGreen} `,
+                    values: [
+                        "**Cola de turnos (Queue)**: Organiza los turnos para cantar de manera ordenada y sin conflictos.",
+                        "**Sistema de duelos**: Dos participantes se enfrentan y la comunidad vota por el ganador.",
+                        "**Sistema de réplicas**: De 2 a 4 personas se enfrentan en turnos, y al final se realiza una votación para decidir al ganador."
+                    ]
+                }
+            ]
+        },
+        {
+            title: "Reglas para el uso de Sharpy",
+            prefix: `${Emojis.Echo.Arrow} `,
+            fields: [
+                {
+                    name: "Para garantizar que Sharpy funcione correctamente y mantener la armonía en **Echoes Of Talent**, te pedimos seguir estas reglas:",
+                    prefix: `${Emojis.Echo.AnimatedArrowRed} `,
+                    values: [
+                        "**No abuses de los bugs**: Si encuentras algún error en el bot, repórtalo utilizando el comando **`/dev report`**.",
+                        "**Evita el spam de comandos**: Usa los comandos de manera responsable para no saturar el bot o el chat.",
+                        "**Respeta las dinámicas**: Sigue las instrucciones para las colas, duelos y réplicas, y evita sabotear la experiencia de otros usuarios.",
+                        "**Uso exclusivo para Echoes Of Talent**: Sharpy es un bot privado diseñado específicamente para esta comunidad. *(Cualquier  intento de uso externo del bot conllevara a un bloqueo de servidor)*"
+                    ]
+                }
+            ]
+        }
+    ],
+    footer: "*Y en caso de no respetar las reglas se te hará un Blacklisteo indeterminado, lo cual implica que no tendrás permiso de usar NINGUN comando o interacción del bot así que evitemos llegar a esa situación.*"
+};
+
+// Info para el embed de Karaoke
+export const InfoKaraokeData = {
+    title: `${Emojis.Echo.Microphone} Información de Karaoke ${Emojis.Echo.Microphone}`,
+    description:
+        "Sharpy incluye tres dinámicas principales para enriquecer la experiencia de karaoke en **Echoes Of Talent**: **Queue**, **Duel** y **Replica**. A continuación, encontrarás cómo usar cada una de ellas.\n> ***Nota**: Para usar estas dinámicas, debes estar conectado a un canal de voz de karaoke y si te sales de voz, serás expulsado de la dinamica.*",
+    color: "#550000" as ColorResolvable,
+    sections: [
+        {
+            title: "Lista de Turnos *(Queue)*",
+            prefix: `${Emojis.Echo.ArrowBlue} `,
+            description:
+                "La cola organiza los turnos para cantar de manera ordenada.\nEs obligatorio estar conectado a un canal de voz de karaoke para la dinamica.",
+            fields: [
+                {
+                    name: "Comandos principales",
+                    prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
+                    values: [
+                        "**`/karaoke start-queue`**: Crea una nueva cola de karaoke.",
+                        "**`/karaoke show-queue`**: Reenvía el mensaje de la cola en el canal de texto para evitar que se pierda en el historial."
+                    ]
+                },
+                {
+                    name: "Funciones y reglas",
+                    prefix: `${Emojis.Echo.AnimatedArrowRed} `,
+                    values: [
+                        "Unirte y salir de la cola en cualquier momento.",
+                        "Finalizar tu turno.",
+                        "Puede reiniciar la cola usando comandos administrativos.",
+                        "Si eres staff, puedes saltar el turno actual se salta automáticamente.",
+                        "Si no eres staff, se inicia una votación. Si el **80% de los participantes restantes** en la cola votan a favor, el turno se saltará."
+                    ]
+                }
+            ]
+        },
+        {
+            title: "Duelo",
+            prefix: `${Emojis.Echo.ArrowBlue} `,
+            description:
+                "El duelo es una dinámica para que dos personas compitan entre sí, con votaciones al final para decidir al ganador.",
+            fields: [
+                {
+                    name: "Comandos principales",
+                    prefix: `${Emojis.Echo.AnimatedArrowGreen} `,
+                    values: [
+                        "**`/karaoke start-duel <@rival>`**: Envia una solicitud de duelo al usuario mencionado.",
+                        "Si el rival rechaza la solicitud, el duelo se cancela.",
+                        "Si el rival acepta, se pasa a la fase de turnos.",
+                        "**`/karaoke show-duel`**: Reenvía el mensaje del duelo en el canal de texto."
+                    ]
+                },
+                {
+                    name: "Fases del duelo",
+                    prefix: `${Emojis.Echo.AnimatedArrowRed} `,
+                    values: [
+                        "Uno de los participantes comienza el duelo y canta en su turno.",
+                        "Cada participante debe finalizar su turno para que el otro pueda continuar.",
+                        "Una vez que ambos participantes han terminado sus turnos, se inicia una votación.",
+                        "La votación dura **1 minuto**.",
+                        "Los usuarios pueden votar usando botones de cada participante, y el que obtenga más votos gana."
+                    ]
+                }
+            ]
+        },
+        {
+            title: "Réplica",
+            prefix: `${Emojis.Echo.ArrowBlue} `,
+            description:
+                "La réplica es una dinámica especial reservada para **administradores** y eventos. Permite que entre 2 y 4 personas compitan por turnos con una votación final más visual.",
+            fields: [
+                {
+                    name: "Comandos principales",
+                    prefix: `${Emojis.Echo.AnimatedArrowGreen} `,
+                    values: [
+                        "**`/karaoke start-replic`**: Inicia una réplica y envía un mensaje donde los usuarios pueden unirse.",
+                        "**`/karaoke show-replic`**: Reenvía el mensaje de la réplica en el canal de texto."
+                    ]
+                },
+                {
+                    name: "Cómo funciona",
+                    prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
+                    values: [
+                        "Los usuarios pueden unirse presionando el botón de Unirse.",
+                        "Mínimo 2 y máximo 4 personas pueden participar.",
+                        "Cada participante tiene un turno para cantar.",
+                        "Una vez terminados los turnos, se inicia una votación que dura **2 minutos**.",
+                        "Se generan botones para votar por cada participante (hasta un máximo de 4 botones).",
+                        "La votación incluye una barra gráfica con emojis que representa el porcentaje de votos de cada participante y el participante con mayor porcentaje de votos es el ganador."
+                    ]
+                }
+            ]
+        }
+    ]
+};
+
 // Info para el embed de Gerarquia de Roles
 export const Hierarchies = {
     title: `${Emojis.Echo.GoldLeafLeft} JERARQUÍAS STAFF ${Emojis.Echo.GoldLeafRight}`,
@@ -599,7 +766,7 @@ export const StaffInfoRules = {
     }
 };
 
-// Info para los Menus de los AutoRoles
+// Info para los AutoRoles de Colores
 export const ColorData = [
     {
         label: "Rojo",
@@ -657,7 +824,8 @@ export const ColorData = [
     }
 ];
 
-export const HobbiesData = [
+// Info para los AutoRoles de Especialidad Musical
+export const MusicalSpecialistData = [
     {
         label: "Oyente",
         description: "Rol para aquellos que disfrutan escuchar música.",
@@ -665,54 +833,13 @@ export const HobbiesData = [
         id: Config.DiscordBot.EchosOfTalent.roles.Oyente,
         buttonId: ButtonsId.Autorol_Oyente
     },
-    {
-        label: "Artista Gráfico",
-        description: "Rol para aquellos que crean arte gráfico.",
-        emoji: "🎨",
-        id: Config.DiscordBot.EchosOfTalent.roles.ArtistaGrafico,
-        buttonId: ButtonsId.Autorol_ArtistaGrafico
-    },
-    {
-        label: "Artista Musical",
-        description: "Rol para aquellos que crean música.",
-        emoji: "🎵",
-        id: Config.DiscordBot.EchosOfTalent.roles.ArtistaMusical,
-        buttonId: ButtonsId.Autorol_ArtistaMusical
-    },
-    {
-        label: "Músico",
-        description: "Rol para músicos en general.",
-        emoji: "🎸",
-        id: Config.DiscordBot.EchosOfTalent.roles.Musico,
-        buttonId: ButtonsId.Autorol_Musico
-    },
+
     {
         label: "Cuerdas",
         description: "Rol para músicos que tocan instrumentos de cuerda.",
         emoji: "🎻",
         id: Config.DiscordBot.EchosOfTalent.roles.Cuerdas,
         buttonId: ButtonsId.Autorol_Cuerdas
-    },
-    {
-        label: "Teatro",
-        description: "Rol para aquellos que participan en teatro.",
-        emoji: "🎭",
-        id: Config.DiscordBot.EchosOfTalent.roles.Teatro,
-        buttonId: ButtonsId.Autorol_Teatro
-    },
-    {
-        label: "DJ",
-        description: "Rol para DJs.",
-        emoji: "🎧",
-        id: Config.DiscordBot.EchosOfTalent.roles.DJ,
-        buttonId: ButtonsId.Autorol_DJ
-    },
-    {
-        label: "Gaming",
-        description: "Rol para aquellos que disfrutan de los videojuegos.",
-        emoji: "🎮",
-        id: Config.DiscordBot.EchosOfTalent.roles.Gaming,
-        buttonId: ButtonsId.Autorol_Gaming
     },
     {
         label: "Vientos",
@@ -736,32 +863,11 @@ export const HobbiesData = [
         buttonId: ButtonsId.Autorol_PianistaTecladista
     },
     {
-        label: "Deporte",
-        description: "Rol para aquellos que disfrutan de los deportes.",
-        emoji: "⚽",
-        id: Config.DiscordBot.EchosOfTalent.roles.Deporte,
-        buttonId: ButtonsId.Autorol_Deporte
-    },
-    {
-        label: "Escritor",
-        description: "Rol para escritores.",
-        emoji: "✍️",
-        id: Config.DiscordBot.EchosOfTalent.roles.Escritor,
-        buttonId: ButtonsId.Autorol_Escritor
-    },
-    {
         label: "Compositor",
         description: "Rol para compositores.",
         emoji: "🎼",
         id: Config.DiscordBot.EchosOfTalent.roles.Compositor,
         buttonId: ButtonsId.Autorol_Compositor
-    },
-    {
-        label: "Bossa Nova",
-        description: "Rol para aquellos que disfrutan de la Bossa Nova.",
-        emoji: "🎶",
-        id: Config.DiscordBot.EchosOfTalent.roles.BossaNova,
-        buttonId: ButtonsId.Autorol_BossaNova
     },
     {
         label: "Percusionista",
@@ -779,6 +885,75 @@ export const HobbiesData = [
     }
 ];
 
+// Info para los AutoRoles de Hobbies
+export const HobbiesData = [
+    {
+        label: "Artista Gráfico",
+        description: "Rol para aquellos que crean arte gráfico.",
+        emoji: "🎨",
+        id: Config.DiscordBot.EchosOfTalent.roles.ArtistaGrafico,
+        buttonId: ButtonsId.Autorol_ArtistaGrafico
+    },
+    {
+        label: "Artista Musical",
+        description: "Rol para aquellos que crean música.",
+        emoji: "🎵",
+        id: Config.DiscordBot.EchosOfTalent.roles.ArtistaMusical,
+        buttonId: ButtonsId.Autorol_ArtistaMusical
+    },
+    {
+        label: "Músico",
+        description: "Rol para músicos en general.",
+        emoji: "🎸",
+        id: Config.DiscordBot.EchosOfTalent.roles.Musico,
+        buttonId: ButtonsId.Autorol_Musico
+    },
+
+    {
+        label: "Teatro",
+        description: "Rol para aquellos que participan en teatro.",
+        emoji: "🎭",
+        id: Config.DiscordBot.EchosOfTalent.roles.Teatro,
+        buttonId: ButtonsId.Autorol_Teatro
+    },
+    {
+        label: "DJ",
+        description: "Rol para DJs.",
+        emoji: "🎧",
+        id: Config.DiscordBot.EchosOfTalent.roles.DJ,
+        buttonId: ButtonsId.Autorol_DJ
+    },
+    {
+        label: "Gaming",
+        description: "Rol para aquellos que disfrutan de los videojuegos.",
+        emoji: "🎮",
+        id: Config.DiscordBot.EchosOfTalent.roles.Gaming,
+        buttonId: ButtonsId.Autorol_Gaming
+    },
+    {
+        label: "Deporte",
+        description: "Rol para aquellos que disfrutan de los deportes.",
+        emoji: "⚽",
+        id: Config.DiscordBot.EchosOfTalent.roles.Deporte,
+        buttonId: ButtonsId.Autorol_Deporte
+    },
+    {
+        label: "Escritor",
+        description: "Rol para escritores.",
+        emoji: "✍️",
+        id: Config.DiscordBot.EchosOfTalent.roles.Escritor,
+        buttonId: ButtonsId.Autorol_Escritor
+    },
+    {
+        label: "Poesía",
+        description: "Rol para poetas.",
+        emoji: "🖋️",
+        id: Config.DiscordBot.EchosOfTalent.roles.Poesia,
+        buttonId: ButtonsId.Autorol_Poesia
+    }
+];
+
+// Info para los AutoRoles de Géneros Musicales
 export const MusicGenreData = [
     {
         label: "Blues",
@@ -800,6 +975,13 @@ export const MusicGenreData = [
         emoji: "🎻",
         id: Config.DiscordBot.EchosOfTalent.roles.FolkAcustico,
         buttonId: ButtonsId.Autorol_FolkAcustico
+    },
+    {
+        label: "Bossa Nova",
+        description: "Rol para aquellos que disfrutan de la Bossa Nova.",
+        emoji: "🎶",
+        id: Config.DiscordBot.EchosOfTalent.roles.BossaNova,
+        buttonId: ButtonsId.Autorol_BossaNova
     },
     {
         label: "Rock",
@@ -887,6 +1069,7 @@ export const MusicGenreData = [
     }
 ];
 
+// Info para los AutoRoles de Géneros Musicales
 export const BannedWords = [
     "cp",
     "c p",
@@ -909,6 +1092,7 @@ export const BannedWords = [
     "terrorista"
 ];
 
+// Info del equipo de Staff de Echoes of Talent
 export const EchoesTeam = {
     founders: [
         "633792173120290816", // Nozomu,
@@ -952,6 +1136,7 @@ export const EchoesTeam = {
     ]
 };
 
+// Info de Suffijos de los Staff
 export const StaffTeamSuffixes: Record<string, string> = {
     "437308398845952001": Emojis.KomiShouko.KomiFlushed
 };

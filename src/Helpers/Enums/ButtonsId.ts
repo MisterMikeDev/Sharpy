@@ -64,6 +64,7 @@ export enum ButtonsId {
     Autorol_PianistaTecladista = "autorolPianistaTecladista",
     Autorol_Deporte = "autorolDeporte",
     Autorol_Escritor = "autorolEscritor",
+    Autorol_Poesia = "autorolPoesia",
     Autorol_Compositor = "autorolCompositor",
     Autorol_BossaNova = "autorolBossaNova",
     Autorol_Percusionista = "autorolPercusionista",

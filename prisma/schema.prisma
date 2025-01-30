@@ -8,12 +8,16 @@ datasource db {
 }
 
 model UserXp {
-  id             String   @id
-  xp             Int      @default(0)
-  xpForNextLevel Int      @default(100)
-  level          Int      @default(1)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  textXp              Int      @default(0)
+  textXpForNextLevel  Int      @default(100)
+  voiceXp             Int      @default(0)
+  voiceXpForNextLevel Int      @default(50)
+  textLevel           Int      @default(0)
+  voiceLevel          Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
 
 model Tickets {

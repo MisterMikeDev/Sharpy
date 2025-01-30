@@ -16,3 +16,9 @@ export {
     VoteSecondParticipant,
     VoteThirdParticipant
 } from "./Replic";
+export {
+    ColorActionRows,
+    HobbiesActionRows,
+    MusicGenreActionRows,
+    MusicalSpecialistActionRows
+} from "./Autoroles";

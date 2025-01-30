@@ -3,7 +3,8 @@ import { Sharpy } from "../../../Client";
 import {
     ColorActionRows,
     HobbiesActionRows,
-    MusicGenreActionRows
+    MusicGenreActionRows,
+    MusicalSpecialistActionRows
 } from "../Buttons/Autoroles";
 
 export const AutoRoleColorEmbed = (Sharpy: Sharpy) => {
@@ -17,6 +18,19 @@ export const AutoRoleColorEmbed = (Sharpy: Sharpy) => {
         });
     const ColorComponents = ColorActionRows;
     return { ColorAutoRoleEmbed, ColorComponents };
+};
+
+export const AutoRoleMusicalSpecialistEmbed = (Sharpy: Sharpy) => {
+    const MusicalSpecialistEmbed = new EmbedBuilder()
+        .setTitle("Especialidades Musicales")
+        .setDescription("Selecciona la especialidad musical que más te guste.")
+        .setColor("#b1049a")
+        .setFooter({
+            iconURL: Sharpy.user!.displayAvatarURL(),
+            text: "Echoes of Talent | Especialidades Musicales"
+        });
+    const MusicalSpecialistComponents = MusicalSpecialistActionRows;
+    return { MusicalSpecialistEmbed, MusicalSpecialistComponents };
 };
 
 export const AutoRoleHobbiesEmbed = (Sharpy: Sharpy) => {

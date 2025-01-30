@@ -59,7 +59,8 @@ export const buttonEvent: ButtonEvent = {
                 .followUp({
                     content: `${Emojis.Util.Yes} | Turno finalizado, ahora es el turno de <@${rival.id}>.`
                 })
-                .then((int) => setTimeout(() => int.delete().catch(() => {}), 5000));
+                .then((int) => setTimeout(() => int.delete().catch(() => {}), 5000))
+                .catch(() => {});
         } else if (currentTurn === 3) {
             modifiedDuel = {
                 ...currentDuel,

@@ -15,3 +15,5 @@ export { ClampNumbers } from "./ClampNumbers";
 export { sleep } from "./Sleep";
 export { FixedName } from "./FixedName";
 export { CheckIfUserIsInKaraokeVoiceChat } from "./CheckIfUserIsInKaraokeVoiceChat";
+export { CalcXpForMessage } from "./CalcXPForMessage";
+export { CalcXPForTimeOnVoiceChat } from "./CalcXPForTimeOnVoiceChat";

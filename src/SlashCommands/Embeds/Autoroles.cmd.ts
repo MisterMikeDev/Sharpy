@@ -3,7 +3,8 @@ import { Sharpy } from "../../Client";
 import {
     AutoRoleColorEmbed,
     AutoRoleHobbiesEmbed,
-    AutoRoleMusicalGenderEmbed
+    AutoRoleMusicalGenderEmbed,
+    AutoRoleMusicalSpecialistEmbed
 } from "../../Helpers";
 
 export const AutorolesCommand = async ({
@@ -14,6 +15,8 @@ export const AutorolesCommand = async ({
     interaction: CommandInteraction<CacheType>;
 }) => {
     const { ColorAutoRoleEmbed, ColorComponents } = AutoRoleColorEmbed(Sharpy);
+    const { MusicalSpecialistEmbed, MusicalSpecialistComponents } =
+        AutoRoleMusicalSpecialistEmbed(Sharpy);
     const { HobbiesAutoRoleEmbed, HobbiesComponents } = AutoRoleHobbiesEmbed(Sharpy);
     const { MusicGenreComponents, MusicalGenderAutoRoleEmbed } =
         AutoRoleMusicalGenderEmbed(Sharpy);
@@ -21,6 +24,11 @@ export const AutorolesCommand = async ({
     await interaction.channel?.send({
         embeds: [ColorAutoRoleEmbed],
         components: ColorComponents as any
+    });
+
+    await interaction.channel?.send({
+        embeds: [MusicalSpecialistEmbed],
+        components: MusicalSpecialistComponents as any
     });
 
     await interaction.channel?.send({

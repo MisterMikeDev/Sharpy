@@ -18,6 +18,10 @@ export const event: Event = {
                 content: `¡Bienvenido <@${member.id}> a 𝐄𝐂𝐇𝐎𝐄𝐒 𝐎𝐅 𝐓𝐀𝐋𝐄𝐍𝐓! 🎉`,
                 embeds: [WelcomeEmbed(user)]
             });
+
+            await member.roles
+                .add(Config.DiscordBot.EchosOfTalent.roles.Miembro)
+                .catch(() => {});
         } catch (error) {
             console.error(`No se pudo enviar el mensaje de bienvenida: ${error}`);
         }

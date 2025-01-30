@@ -7,7 +7,8 @@ import {
     Duel,
     MenuEvent,
     ModalEvent,
-    Queue
+    Queue,
+    UserVoiceChannel
 } from "../Interfaces";
 import {
     EventHandler,
@@ -27,6 +28,7 @@ import {
 import { Db as TicketDb } from "../Helpers/Db/Tickets";
 import { Db as SuggestDb } from "../Helpers/Db/Suggest";
 import { Db as ReplicDb } from "../Helpers/Db/Replic";
+import { Db as LevelSystemDb } from "../Helpers/Db/LevelSystem";
 
 const { DiscordBot } = Config;
 
@@ -39,6 +41,7 @@ export class Sharpy extends Client {
     public modalevents: Collection<string, ModalEvent> = new Collection();
     public queue: Collection<string, Queue> = new Collection();
     public duel: Collection<string, Duel> = new Collection();
+    public userVoiceChannel: Set<UserVoiceChannel> = new Set();
     public db: PrismaClient = db;
     public isOnline = false;
 
@@ -116,6 +119,17 @@ export class Sharpy extends Client {
         const modifyQueue = {
             ...currentQueue,
             skipVoteList: [...currentQueue.skipVoteList, { user, weight }]
+        } as Queue;
+
+        this.queue.set(id, modifyQueue);
+    }
+
+    public async RemoveUserToSkipVoteList(id: string, userId: string) {
+        const currentQueue = this.queue.get(id) as Queue;
+
+        const modifyQueue = {
+            ...currentQueue,
+            skipVoteList: currentQueue.skipVoteList.filter((v) => v.user.id !== userId)
         } as Queue;
 
         this.queue.set(id, modifyQueue);
@@ -309,9 +323,6 @@ export class Sharpy extends Client {
         this.duel.delete(duel.id);
     }
 
-    /* Metodos para los torneos */
-    // Proximamente...
-
     /* Metodos para los tickets */
     public async UpdateTicketInCurrentChannel(channelId: string) {
         const ticket = await TicketDb.GetTicketByChannelId(this, channelId);
@@ -392,5 +403,78 @@ export class Sharpy extends Client {
             embeds: [embed],
             components
         });
+    }
+
+    /* Metodos para la medicion de tiempos en VoiceChat */
+    public async GetUserVoiceChannel(userId: string) {
+        return Array.from(this.userVoiceChannel).find((user) => user.id === userId);
+    }
+
+    public async AddUserToVoiceChannel(userId: string, channelId: string) {
+        const userVoiceChannel = {
+            id: userId,
+            channelId,
+            onJoinDate: new Date().getTime()
+        } as UserVoiceChannel;
+
+        this.userVoiceChannel.add(userVoiceChannel);
+    }
+
+    public async RemoveUserFromVoiceChannel(userId: string) {
+        this.userVoiceChannel.delete(
+            Array.from(this.userVoiceChannel).find((user) => user.id === userId)!
+        );
+    }
+
+    public async GetTimeInVoiceChannelAndRemoveUser(userId: string) {
+        const user = Array.from(this.userVoiceChannel).find((user) => user.id === userId);
+
+        if (!user) {
+            return 0;
+        }
+
+        const time = new Date().getTime() - user.onJoinDate;
+
+        this.userVoiceChannel.delete(user);
+
+        return time;
+    }
+
+    public async AddVoiceXpToUser(userId: string, xp: number) {
+        const xpUser = await LevelSystemDb.GetUserByUserId(this, userId);
+
+        if (!xpUser) await LevelSystemDb.CreateUser(this, userId);
+
+        const { leveledUp, message: levelUpMessage } = await LevelSystemDb.AddXpToUser(
+            this,
+            userId,
+            xp
+        );
+
+        if (leveledUp && levelUpMessage) {
+            const channel = (await this.channels.fetch(
+                Config.DiscordBot.EchosOfTalent.channels.Niveles
+            )) as TextChannel;
+
+            if (!channel) return;
+
+            const user = await this.users.fetch(userId);
+
+            channel.send({
+                content: `<@${userId}>`,
+                embeds: [
+                    new EmbedBuilder()
+                        .setTitle("🎉 ¡Nivel alcanzado! 🎉")
+                        .setDescription(`🎉 ${levelUpMessage} 🎉`)
+                        .setColor("#e9c430")
+                        .setFooter({
+                            text: "Echoes of Talent | Subida de nivel en VoiceChat",
+                            iconURL: user.displayAvatarURL()
+                        })
+                        .setTimestamp()
+                ],
+                allowedMentions: { parse: ["users"] }
+            });
+        }
     }
 }

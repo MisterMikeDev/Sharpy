@@ -1,6 +1,7 @@
 -- CreateTable
 CREATE TABLE "UserXp" (
     "id" TEXT NOT NULL PRIMARY KEY,
+    "userId" TEXT NOT NULL,
     "xp" INTEGER NOT NULL DEFAULT 0,
     "xpForNextLevel" INTEGER NOT NULL DEFAULT 100,
     "level" INTEGER NOT NULL DEFAULT 1,
@@ -80,6 +81,18 @@ CREATE TABLE "ReplicVotes" (
     "updatedAt" DATETIME NOT NULL,
     CONSTRAINT "ReplicVotes_replicId_fkey" FOREIGN KEY ("replicId") REFERENCES "Replic" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- CreateTable
+CREATE TABLE "Blacklist" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "userId" TEXT NOT NULL,
+    "reason" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "UserXp_userId_key" ON "UserXp"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Tickets_authorId_key" ON "Tickets"("authorId");

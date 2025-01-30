@@ -1,7 +1,12 @@
 import { ButtonInteraction, Interaction } from "discord.js";
 import { Event } from "../../Interfaces";
 import { Db } from "../../Helpers/Db/Blacklist";
-import { ColorData, HobbiesData, MusicGenreData } from "../../Data/Data";
+import {
+    ColorData,
+    HobbiesData,
+    MusicalSpecialistData,
+    MusicGenreData
+} from "../../Data/Data";
 import { Emojis } from "../../Data/Emojis";
 
 export const event: Event = {
@@ -24,16 +29,27 @@ export const event: Event = {
 
             if (ColorData.some((role) => role.buttonId === BtnId)) {
                 return await updateRole(interaction, ColorData);
+            } else if (MusicalSpecialistData.some((role) => role.buttonId === BtnId)) {
+                return await updateRole(interaction, MusicalSpecialistData);
             } else if (HobbiesData.some((role) => role.buttonId === BtnId)) {
                 return await updateRole(interaction, HobbiesData);
             } else if (MusicGenreData.some((role) => role.buttonId === BtnId)) {
                 return await updateRole(interaction, MusicGenreData);
             }
 
-            return interaction.reply({
+            return interaction.followUp({
                 content: `${Emojis.Util.No} | El rol seleccionado no se encontró.`,
                 ephemeral: true
             });
+        } else {
+            const ButtonEvent = Sharpy.buttonevents.get(BtnId);
+            if (!ButtonEvent)
+                return interaction.reply({
+                    content: `${Emojis.Util.No} | Este boton no esta registrado`,
+                    ephemeral: true
+                });
+
+            ButtonEvent.run(Sharpy, interaction);
         }
     }
 };
