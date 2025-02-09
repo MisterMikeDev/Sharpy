@@ -17,7 +17,6 @@ export const event: Event = {
         const oldChannelType = oldChannel?.type;
         const newChannelType = newChannel?.type;
 
-        //Detecte si se mueve de un canal a otro o si oldChannelType es undefined y newChannelType es GuildVoice
         if (
             (oldChannelType === ChannelType.GuildVoice &&
                 newChannelType === ChannelType.GuildVoice) ||

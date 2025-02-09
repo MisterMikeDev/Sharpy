@@ -5,6 +5,7 @@ import {
 import { SlashCommandStructure } from "../../Interfaces";
 import { TimeoutCommand } from "./Timeout.cmd";
 import { UntimeoutCommand } from "./Untimeout.cmd";
+import { BulkCommand } from "./Bulk.cmd";
 
 export default new SlashCommandStructure({
     name: "mod",
@@ -177,14 +178,34 @@ export default new SlashCommandStructure({
                         {
                             name: "Solo de bots",
                             value: "bot"
+                        },
+                        {
+                            name: "Solo de Sharpy",
+                            value: "sharpy"
                         }
                     ]
+                },
+                {
+                    name: "user",
+                    description: "Usuario al que se le eliminarán los mensajes.",
+                    type: ApplicationCommandOptionType.User
+                }
+            ]
+        },
+        {
+            name: "lock",
+            description: "Cierra un canal de texto.",
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: "channel",
+                    description: "Canal a cerrar.",
+                    type: ApplicationCommandOptionType.Channel
                 }
             ]
         }
     ],
     run: async ({ Sharpy, interaction }) => {
-        await interaction.deferReply();
         const Int = interaction.options as CommandInteractionOptionResolver;
         const subCommand = Int.getSubcommand();
         const IntMap = {
@@ -192,18 +213,19 @@ export default new SlashCommandStructure({
                 await TimeoutCommand({ Sharpy, interaction, options: Int }),
             untimeout: async () =>
                 await UntimeoutCommand({ Sharpy, interaction, options: Int }),
-            kick: async () => interaction.followUp("Subcomando en desarrollo."),
-            ban: async () => interaction.followUp("Subcomando en desarrollo."),
-            unban: async () => interaction.followUp("Subcomando en desarrollo."),
-            apeal: async () => interaction.followUp("Subcomando en desarrollo."),
-            report: async () => interaction.followUp("Subcomando en desarrollo."),
-            warn: async () => interaction.followUp("Subcomando en desarrollo."),
-            unwarn: async () => interaction.followUp("Subcomando en desarrollo."),
-            bulk: async () => interaction.followUp("Subcomando en desarrollo.")
+            kick: async () => interaction.reply("Subcomando en desarrollo."),
+            ban: async () => interaction.reply("Subcomando en desarrollo."),
+            unban: async () => interaction.reply("Subcomando en desarrollo."),
+            apeal: async () => interaction.reply("Subcomando en desarrollo."),
+            report: async () => interaction.reply("Subcomando en desarrollo."),
+            warn: async () => interaction.reply("Subcomando en desarrollo."),
+            unwarn: async () => interaction.reply("Subcomando en desarrollo."),
+            bulk: async () => BulkCommand({ Sharpy, interaction, options: Int }),
+            lock: async () => interaction.reply("Subcomando en desarrollo.")
         };
 
         const CommandToExecute = IntMap[subCommand as keyof typeof IntMap];
         if (CommandToExecute) await CommandToExecute();
-        else await interaction.followUp("No se ha encontrado el subcomando.");
+        else await interaction.reply("No se ha encontrado el subcomando.");
     }
 });

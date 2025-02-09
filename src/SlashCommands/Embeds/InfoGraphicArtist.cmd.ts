@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { GraphicArtistsEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const InfoGraphicArtistEmbedCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const InfoGraphicArtistEmbedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Artistas Gráficos enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Artistas Gráficos enviado correctamente.`
     });
 };

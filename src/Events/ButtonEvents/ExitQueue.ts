@@ -14,7 +14,7 @@ export const buttonEvent: ButtonEvent = {
         if (!currentQueue) {
             return await interaction
                 .followUp({
-                    content: `${Emojis.Util.No} | No hay ninguna cola en este canal.`
+                    content: `${Emojis.Util.No} | No hay ninguna lista en este canal.`
                 })
                 .then((int) => {
                     setTimeout(async () => {
@@ -26,7 +26,7 @@ export const buttonEvent: ButtonEvent = {
         if (!currentQueue.list.some((user) => user.id === interactionUser.id)) {
             return await interaction
                 .followUp({
-                    content: `${Emojis.Util.No} | No estás en la cola.`
+                    content: `${Emojis.Util.No} | No estás en la lista.`
                 })
                 .then((int) => {
                     setTimeout(async () => {
@@ -46,7 +46,7 @@ export const buttonEvent: ButtonEvent = {
 
         await interaction
             .followUp({
-                content: `${Emojis.Util.Yes} | Saliendo de la cola.`
+                content: `${Emojis.Util.Yes} | Saliendo de la lista.`
             })
             .then((int) => {
                 setTimeout(async () => {

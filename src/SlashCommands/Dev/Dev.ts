@@ -13,6 +13,8 @@ import { DeleteXpUserCommand } from "./DeleteXpUser.cmd";
 import { DeleteAllXpUsersCommand } from "./DeleteAllXpUsers.cmd";
 import { AddXpToUserCommand } from "./AddXpToUser.cmd";
 import { RemoveXpToUserCommand } from "./RemoveXpToUser.cmd";
+import { Emojis } from "../../Data/Emojis";
+import { ReportBugCommand } from "./ReportBug.cmd";
 const { Subcommand } = ApplicationCommandOptionType;
 export default new SlashCommandStructure({
     name: "dev",
@@ -120,6 +122,22 @@ export default new SlashCommandStructure({
                     description: "XP a añadir.",
                     type: ApplicationCommandOptionType.Integer,
                     required: true
+                },
+                {
+                    name: "type",
+                    description: "Tipo de XP a añadir.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true,
+                    choices: [
+                        {
+                            name: "Texto",
+                            value: "text"
+                        },
+                        {
+                            name: "Voz",
+                            value: "voice"
+                        }
+                    ]
                 }
             ]
         },
@@ -139,6 +157,35 @@ export default new SlashCommandStructure({
                     description: "XP a eliminar.",
                     type: ApplicationCommandOptionType.Integer,
                     required: true
+                },
+                {
+                    name: "type",
+                    description: "Tipo de XP a eliminar.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true,
+                    choices: [
+                        {
+                            name: "Texto",
+                            value: "text"
+                        },
+                        {
+                            name: "Voz",
+                            value: "voice"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "report",
+            description: "Reporta un bug al desarrollador.",
+            type: Subcommand,
+            options: [
+                {
+                    name: "bug",
+                    description: "Bug a reportar.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true
                 }
             ]
         }
@@ -146,9 +193,12 @@ export default new SlashCommandStructure({
     run: async ({ Sharpy, interaction }) => {
         await interaction.deferReply();
         if (!interaction.guild) return;
-        if (interaction.user.id !== "437308398845952001") return;
         const Int = interaction.options as CommandInteractionOptionResolver;
         const subCommand = Int.getSubcommand();
+        if (interaction.user.id !== "437308398845952001" && subCommand === "report")
+            return await interaction.followUp(
+                `${Emojis.Util.No} | No tienes permiso para usar este comando.`
+            );
         const IntMap = {
             "add-blacklist": async () => {
                 const userId = Int.getString("user-id")!;
@@ -188,12 +238,18 @@ export default new SlashCommandStructure({
             "add-xp-to-user": async () => {
                 const userId = Int.getString("user-id", true);
                 const xp = Int.getInteger("xp", true);
-                await AddXpToUserCommand({ Sharpy, interaction, userId, xp });
+                const type = Int.getString("type", true) as "text" | "voice";
+                await AddXpToUserCommand({ Sharpy, interaction, userId, xp, type });
             },
             "remove-xp-to-user": async () => {
                 const userId = Int.getString("user-id", true);
                 const xp = Int.getInteger("xp", true);
-                await RemoveXpToUserCommand({ Sharpy, interaction, userId, xp });
+                const type = Int.getString("type", true) as "text" | "voice";
+                await RemoveXpToUserCommand({ Sharpy, interaction, userId, xp, type });
+            },
+            report: async () => {
+                const bug = Int.getString("bug", true);
+                await ReportBugCommand({ Sharpy, interaction, bug });
             }
         };
 

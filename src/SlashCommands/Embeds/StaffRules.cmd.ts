@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { EmbedStaffRules } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const StaffRulesCommand = async ({
     Sharpy,
@@ -14,6 +15,6 @@ export const StaffRulesCommand = async ({
     await interaction.channel!.send({ embeds: [embed] });
 
     await interaction.followUp({
-        content: "Embed de reglas de staff enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de reglas de staff enviado correctamente.`
     });
 };

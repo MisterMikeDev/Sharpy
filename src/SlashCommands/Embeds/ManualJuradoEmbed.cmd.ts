@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { ManualEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const ManualJuradoEmbedCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const ManualJuradoEmbedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Manual de Jurado enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Manual de Jurado enviado correctamente.`
     });
 };

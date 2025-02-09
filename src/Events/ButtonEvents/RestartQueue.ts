@@ -18,7 +18,7 @@ export const buttonEvent: ButtonEvent = {
         if (!currentQueue) {
             return await interaction
                 .followUp({
-                    content: `${Emojis.Util.Yes} | No hay ninguna cola en este canal.`
+                    content: `${Emojis.Util.Yes} | No hay ninguna lista en este canal.`
                 })
                 .then((int) => {
                     setTimeout(async () => {
@@ -64,7 +64,7 @@ export const buttonEvent: ButtonEvent = {
         if (!hasRequiredPermissions || !hasRequiredRoles) {
             return await interaction
                 .followUp({
-                    content: `${Emojis.Util.Yes} | No tienes los permisos o roles necesarios para reiniciar la cola.`
+                    content: `${Emojis.Util.Yes} | No tienes los permisos o roles necesarios para reiniciar la lista.`
                 })
                 .then((int) => {
                     setTimeout(async () => {
@@ -84,7 +84,7 @@ export const buttonEvent: ButtonEvent = {
 
         await interaction
             .followUp({
-                content: `${Emojis.Util.Yes} | Reiniciando la cola.`
+                content: `${Emojis.Util.Yes} | Reiniciando la lista.`
             })
             .then((int) => {
                 setTimeout(async () => {

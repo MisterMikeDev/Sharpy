@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { PostulationDesignerEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const InfoDesignerEmbedCommand = async ({
     Sharpy,
@@ -17,6 +18,6 @@ export const InfoDesignerEmbedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Información de Diseñador se ha enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Información de Diseñador se ha enviado correctamente.`
     });
 };

@@ -441,40 +441,20 @@ export class Sharpy extends Client {
     }
 
     public async AddVoiceXpToUser(userId: string, xp: number) {
+        const member = await (
+            await this.guilds.fetch(Config.DiscordBot.EchosOfTalent.id)
+        ).members.fetch(userId);
         const xpUser = await LevelSystemDb.GetUserByUserId(this, userId);
 
         if (!xpUser) await LevelSystemDb.CreateUser(this, userId);
 
-        const { leveledUp, message: levelUpMessage } = await LevelSystemDb.AddXpToUser(
-            this,
-            userId,
-            xp
-        );
+        const { leveledUp, level } = await LevelSystemDb.AddXpToUser(this, userId, xp);
 
-        if (leveledUp && levelUpMessage) {
-            const channel = (await this.channels.fetch(
-                Config.DiscordBot.EchosOfTalent.channels.Niveles
-            )) as TextChannel;
-
-            if (!channel) return;
-
-            const user = await this.users.fetch(userId);
-
-            channel.send({
-                content: `<@${userId}>`,
-                embeds: [
-                    new EmbedBuilder()
-                        .setTitle("🎉 ¡Nivel alcanzado! 🎉")
-                        .setDescription(`🎉 ${levelUpMessage} 🎉`)
-                        .setColor("#e9c430")
-                        .setFooter({
-                            text: "Echoes of Talent | Subida de nivel en VoiceChat",
-                            iconURL: user.displayAvatarURL()
-                        })
-                        .setTimestamp()
-                ],
-                allowedMentions: { parse: ["users"] }
+        if (leveledUp)
+            this.emit("userLevelUp", {
+                member,
+                type: "voice",
+                level
             });
-        }
     }
 }

@@ -71,7 +71,7 @@ export default new SlashCommandStructure({
 
         if (!hasRequiredPermissions && !hasRequiredRoles) {
             return await interaction.followUp({
-                content: `${Emojis.Util.No} | No puedes iniciar una cola de karaoke si hay un duelo en curso.`
+                content: `${Emojis.Util.No} | No puedes iniciar una lista de karaoke si hay un duelo en curso.`
             });
         }
 

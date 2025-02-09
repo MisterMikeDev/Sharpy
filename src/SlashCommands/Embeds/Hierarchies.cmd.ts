@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { HierarchiesEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const HierarchiesCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const HierarchiesCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Jerarquías enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Jerarquías enviado correctamente.`
     });
 };

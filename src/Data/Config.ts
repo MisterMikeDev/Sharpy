@@ -1,5 +1,4 @@
 import { ActivitiesOptions, ActivityType } from "discord.js";
-import { Sharpy } from "../Client";
 
 const StatusActivity: ActivitiesOptions = {
     type: ActivityType.Streaming,
@@ -54,8 +53,12 @@ export const Config = {
         ],
         EchosOfTalent: {
             id: "1307747744768856110",
+            apealServerId: "1335116102342279219",
             prefixes: {
-                tickets: "┗『📜』ticket-"
+                tickets: "┗『📜』ticket-",
+                category: "──『Apeal $nick$』──",
+                apealText: "┏『🖊️』apeal-",
+                apealVoice: "┗『🎙️』apeal-"
             },
             channels: {
                 Anuncios: "1308057691356401677",
@@ -71,6 +74,9 @@ export const Config = {
                 Perfiles: "1314449678254735370",
                 MaterialMusical: "1314449635829485628",
                 MaterialGrafico: "1327375896071376976",
+                ReportBug: "1335090260132102235",
+                InfoApeals: "1335826364045066251",
+                CreateApeal: "1335826249645424697",
 
                 // Canales de texto que pueden ganar XP
                 General: "1307844573560701119",
@@ -111,6 +117,15 @@ export const Config = {
                 Ayudante: "1312909599170498690",
                 Staff: "1317319643043725383",
                 Disenador: "1316510251117318204",
+                /* Roles jerarquicos (Apelaciones) */
+                FounderApeal: "1335116380151742464",
+                DirectorApeal: "1335116524775542866",
+                AdminApeal: "1335116572204732416",
+                SupervisorApeal: "1335116646313889814",
+                ModeratorApeal: "1335116762579992627",
+                AyudanteApeal: "1335116827931447347",
+                StaffApeal: "1335116873527722139",
+                BaneadoApeal: "1335116991102586941",
                 /* Roles de tickets */
                 TicketsSupport: "1315818733364842540",
                 TicketsAdmin: "1315818734245384205",
@@ -227,27 +242,19 @@ export const Config = {
                 Developing: "1318421706192322591"
             }
         },
-        Status: (Sharpy: Sharpy): ActivitiesOptions[] => [
-            {
-                name: `En desarrollo de ${Sharpy.user?.tag}.`,
-                type: ActivityType.Watching
-            },
-            {
-                ...StatusActivity,
-                name: "Tu estas preso pero en tu mente."
-            },
-            {
-                ...StatusActivity,
-                name: "Ay chavito, tienes el prepucio lleno de queso."
-            },
-            {
-                ...StatusActivity,
-                name: "Que tiene de malo, estan bien ricos los penes."
-            },
-            {
-                ...StatusActivity,
-                name: "Yo pago con Apple Pay."
-            }
-        ]
+        Status: GenerateStatusActivity()
     }
 };
+
+function GenerateStatusActivity(): ActivitiesOptions[] {
+    const phrases = [
+        "Tu estas preso pero en tu mente.",
+        "Ay chavito, tienes el prepucio lleno de queso.",
+        "Que tiene de malo, estan bien ricos los penes."
+    ];
+
+    return phrases.map((phrase) => ({
+        ...StatusActivity,
+        name: phrase
+    })) as ActivitiesOptions[];
+}

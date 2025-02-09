@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { PostulationEventCreatorEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const InfoEventCreatorEmbedCommand = async ({
     Sharpy,
@@ -17,6 +18,6 @@ export const InfoEventCreatorEmbedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Información de Creador de Eventos se ha enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Información de Creador de Eventos se ha enviado correctamente.`
     });
 };

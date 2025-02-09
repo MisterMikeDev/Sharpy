@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { InfoRockolaEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const InfoRockolaEmbedCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const InfoRockolaEmbedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de la Rockola enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de la Rockola enviado correctamente.`
     });
 };

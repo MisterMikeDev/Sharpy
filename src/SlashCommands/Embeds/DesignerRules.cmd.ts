@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { DesignerRulesEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const DesignerRulesCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const DesignerRulesCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Reglas de Diseñadores enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Reglas de Diseñadores enviado correctamente.`
     });
 };

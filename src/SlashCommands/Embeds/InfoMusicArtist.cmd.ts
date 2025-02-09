@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { MusicArtistsEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const InfoBeMusicArtistEmbedCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const InfoBeMusicArtistEmbedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Artistas Musicales enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Artistas Musicales enviado correctamente.`
     });
 };

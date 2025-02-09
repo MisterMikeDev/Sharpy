@@ -19,6 +19,7 @@ export const TimeoutCommand = async ({
     interaction: CommandInteraction<CacheType>;
     options: CommandInteractionOptionResolver;
 }) => {
+    await interaction.deferReply();
     const user = options.getUser("user", true);
     const time = options.getString("time") ?? "10m";
     const reason = options.getString("reason") ?? "No especificado.";
@@ -88,6 +89,7 @@ export const TimeoutCommand = async ({
             });
         }
     }
+
     if (
         member.roles.highest.position >= Number(interaction.guild?.roles.highest.position)
     )

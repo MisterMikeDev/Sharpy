@@ -21,7 +21,7 @@ export const buttonEvent: ButtonEvent = {
         if (!currentQueue) {
             return await interaction
                 .followUp({
-                    content: `${Emojis.Util.No} | No hay ninguna cola en este canal.`
+                    content: `${Emojis.Util.No} | No hay ninguna lista en este canal.`
                 })
                 .then((int) => {
                     setTimeout(async () => {

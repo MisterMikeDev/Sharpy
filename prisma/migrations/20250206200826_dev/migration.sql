@@ -2,9 +2,12 @@
 CREATE TABLE "UserXp" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
-    "xp" INTEGER NOT NULL DEFAULT 0,
-    "xpForNextLevel" INTEGER NOT NULL DEFAULT 100,
-    "level" INTEGER NOT NULL DEFAULT 1,
+    "textXp" INTEGER NOT NULL DEFAULT 0,
+    "textXpForNextLevel" INTEGER NOT NULL DEFAULT 100,
+    "voiceXp" INTEGER NOT NULL DEFAULT 0,
+    "voiceXpForNextLevel" INTEGER NOT NULL DEFAULT 50,
+    "textLevel" INTEGER NOT NULL DEFAULT 0,
+    "voiceLevel" INTEGER NOT NULL DEFAULT 0,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
@@ -91,6 +94,37 @@ CREATE TABLE "Blacklist" (
     "updatedAt" DATETIME NOT NULL
 );
 
+-- CreateTable
+CREATE TABLE "PreApeals" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "userId" TEXT NOT NULL,
+    "reason" TEXT NOT NULL,
+    "timeNeededToApeal" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Apeals" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "userId" TEXT NOT NULL,
+    "categoryId" TEXT NOT NULL,
+    "textApealChannelId" TEXT NOT NULL,
+    "voiceApealChannelId" TEXT NOT NULL,
+    "status" TEXT NOT NULL DEFAULT 'pending',
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Pardons" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "userId" TEXT NOT NULL,
+    "count" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "UserXp_userId_key" ON "UserXp"("userId");
 
@@ -108,3 +142,12 @@ CREATE UNIQUE INDEX "TicketsResolution_ticketId_key" ON "TicketsResolution"("tic
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Suggestions_messageId_key" ON "Suggestions"("messageId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "PreApeals_userId_key" ON "PreApeals"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Apeals_userId_key" ON "Apeals"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Pardons_userId_key" ON "Pardons"("userId");

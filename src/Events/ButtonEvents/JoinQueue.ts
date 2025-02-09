@@ -15,7 +15,7 @@ export const buttonEvent: ButtonEvent = {
 
         if (!CheckIfUserIsInKaraokeVoiceChat(interaction.member as GuildMember))
             return await interaction.followUp({
-                content: `${Emojis.Util.No} | Debes estar en un canal de Karaoke para unirte a la cola.`,
+                content: `${Emojis.Util.No} | Debes estar en un canal de Karaoke para unirte a la lista.`,
                 ephemeral: true
             });
 
@@ -40,7 +40,7 @@ export const buttonEvent: ButtonEvent = {
 
             return await interaction
                 .followUp({
-                    content: `${Emojis.Util.Yes} | Uniendo a ${interactionUser.username} a la cola.`
+                    content: `${Emojis.Util.Yes} | Uniendo a ${interactionUser.username} a la lista.`
                 })
                 .then((int) => {
                     setTimeout(async () => {
@@ -52,7 +52,7 @@ export const buttonEvent: ButtonEvent = {
         if (currentQueue.list.some((user) => user.id === interactionUser.id)) {
             return await interaction
                 .followUp({
-                    content: `${Emojis.Util.No} | Ya estás en la cola, ${interactionUser.username}.`
+                    content: `${Emojis.Util.No} | Ya estás en la lista, ${interactionUser.username}.`
                 })
                 .then((int) => {
                     setTimeout(async () => {
@@ -72,7 +72,7 @@ export const buttonEvent: ButtonEvent = {
 
         await interaction
             .followUp({
-                content: `${Emojis.Util.Yes} | Uniendo a ${interactionUser.username} a la cola.`
+                content: `${Emojis.Util.Yes} | Uniendo a ${interactionUser.username} a la lista.`
             })
             .then((int) => {
                 setTimeout(async () => {

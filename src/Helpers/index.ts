@@ -39,7 +39,10 @@ export {
     TicketsCreatedEmbed,
     TicketsMainEmbed,
     VerifyCloseTicketEmbed,
-    WelcomeEmbed
+    WelcomeEmbed,
+    InfoApeal,
+    ApealBanEmbed,
+    CreateApealEmbed
 } from "./Components/Embeds";
 
 export {

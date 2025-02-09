@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { ManualEventEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const ManualEventEmbedCommand = async ({
     Sharpy,
@@ -20,6 +21,6 @@ export const ManualEventEmbedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed del Manual de Eventos enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed del Manual de Eventos enviado correctamente.`
     });
 };

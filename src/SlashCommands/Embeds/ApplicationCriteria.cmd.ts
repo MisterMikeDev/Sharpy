@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { ApplicationCriteriaEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const ApplicationCriteriaCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const ApplicationCriteriaCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de Criterios de Postulación enviado correctamente."
+        content: `${Emojis.Util.Yes} | Embed de Criterios de Postulación enviado correctamente.`
     });
 };

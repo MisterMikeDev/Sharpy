@@ -83,7 +83,10 @@ export enum ButtonsId {
     Autorol_Metal = "autorolMetal",
     Autorol_Urbano = "autorolUrbano",
     Autorol_Cumbia = "autorolCumbia",
-    Autorol_Latino = "autorolLatino"
+    Autorol_Latino = "autorolLatino",
+
+    // Apeals
+    CreateApeal = "createApeal"
 }
 
 export type ButtonsType = ButtonsId;

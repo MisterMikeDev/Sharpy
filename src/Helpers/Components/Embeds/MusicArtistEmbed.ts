@@ -16,6 +16,7 @@ export const MusicArtistsEmbed = (Sharpy: Sharpy) => {
     const embed = new EmbedBuilder()
         .setColor(color)
         .setDescription(description)
+        .setImage(MusicArtistsInfo.image)
         .setFooter({
             iconURL: Sharpy.user!.displayAvatarURL(),
             text: "Echoes of Talent | Artistas Musicales"

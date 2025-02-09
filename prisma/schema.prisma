@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "sqlite" // "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -99,3 +99,33 @@ model Blacklist {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model PreApeals {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  reason            String
+  timeNeededToApeal Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Apeals {
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  categoryId          String
+  textApealChannelId  String
+  voiceApealChannelId String
+  status              String   @default("pending") // pending, pardon, rejected
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model Pardons {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  count     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// hacer los embeds de apeal, apeal-info y create-apeal

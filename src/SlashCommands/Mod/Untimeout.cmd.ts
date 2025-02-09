@@ -19,6 +19,7 @@ export const UntimeoutCommand = async ({
     interaction: CommandInteraction<CacheType>;
     options: CommandInteractionOptionResolver;
 }) => {
+    await interaction.deferReply();
     const user = options.getUser("user", true);
     const guild = interaction.guild!;
     const member = guild.members.cache.get(user.id);

@@ -6,6 +6,7 @@ import {
     AutoRoleMusicalGenderEmbed,
     AutoRoleMusicalSpecialistEmbed
 } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const AutorolesCommand = async ({
     Sharpy,
@@ -42,6 +43,6 @@ export const AutorolesCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embeds de Autoroles enviados correctamente."
+        content: `${Emojis.Util.Yes} | Embeds de Autoroles enviados correctamente.`
     });
 };

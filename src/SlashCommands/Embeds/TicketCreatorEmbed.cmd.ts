@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { TicketsMainEmbed } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const TicketsCreatedCommand = async ({
     Sharpy,
@@ -17,6 +18,6 @@ export const TicketsCreatedCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Enviado."
+        content: `${Emojis.Util.Yes} | Embed de creación de tickets enviado correctamente.`
     });
 };

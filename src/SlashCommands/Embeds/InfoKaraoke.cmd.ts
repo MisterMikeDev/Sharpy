@@ -1,6 +1,7 @@
 import { CacheType, CommandInteraction } from "discord.js";
 import { Sharpy } from "../../Client";
 import { InfoKaraoke } from "../../Helpers";
+import { Emojis } from "../../Data/Emojis";
 
 export const InfoKaraokeCommand = async ({
     Sharpy,
@@ -16,6 +17,6 @@ export const InfoKaraokeCommand = async ({
     });
 
     await interaction.followUp({
-        content: "Embed de información de Karaoke enviado."
+        content: `${Emojis.Util.Yes} | Embed de información de Karaoke enviado.`
     });
 };

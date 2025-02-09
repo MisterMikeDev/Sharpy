@@ -17,12 +17,12 @@ export default new SlashCommandStructure({
     options: [
         {
             name: "start-queue",
-            description: "Inicia una cola de Karaoke.",
+            description: "Inicia una lista de Karaoke.",
             type: ApplicationCommandOptionType.Subcommand
         },
         {
             name: "show-queue",
-            description: "Muestra la cola de Karaoke.",
+            description: "Muestra la lista de Karaoke.",
             type: ApplicationCommandOptionType.Subcommand
         },
         {

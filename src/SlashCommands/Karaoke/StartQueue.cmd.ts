@@ -16,7 +16,7 @@ export const StartKaraokeCommand = async ({
 
     if (!CheckIfUserIsInKaraokeVoiceChat(interaction.member as GuildMember))
         return await interaction.followUp({
-            content: `${Emojis.Util.No} | Debes estar en un canal de Karaoke para iniciar una cola.`,
+            content: `${Emojis.Util.No} | Debes estar en un canal de Karaoke para iniciar una lista.`,
             ephemeral: true
         });
 
@@ -25,14 +25,14 @@ export const StartKaraokeCommand = async ({
     if (currentQueue) {
         if (currentQueue.list.length > 0) {
             return await interaction.followUp({
-                content: `${Emojis.Util.No} | Ya hay una cola en curso en este canal.`
+                content: `${Emojis.Util.No} | Ya hay una lista en curso en este canal.`
             });
         }
         try {
             Sharpy.DeleteQueue(interactionChannel!.id);
 
             const intMsg = await interaction.editReply({
-                content: `${Emojis.Util.Loading} | Reiniciando cola para el karaoke...`
+                content: `${Emojis.Util.Loading} | Reiniciando lista para el karaoke...`
             });
 
             await Sharpy.CreateQueue(interactionChannel!.id, intMsg!.id, []);
@@ -60,7 +60,7 @@ export const StartKaraokeCommand = async ({
 
     try {
         const intMsg = await interaction.editReply({
-            content: "Creando cola para el karaoke..."
+            content: "Creando lista para el karaoke..."
         });
 
         await Sharpy.CreateQueue(interactionChannel!.id, intMsg!.id, []);

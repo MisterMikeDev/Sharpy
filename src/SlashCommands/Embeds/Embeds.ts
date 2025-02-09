@@ -34,7 +34,9 @@ import { InfoRockolaEmbedCommand } from "./InfoRockola.cmd";
 import { AutorolesCommand } from "./Autoroles.cmd";
 import { SharpyInfoCommand } from "./SharpyInfo.cmd";
 import { InfoKaraokeCommand } from "./InfoKaraoke.cmd";
-const { Subcommand, String } = ApplicationCommandOptionType;
+import { InfoApealCommand } from "./InfoApeal.cmd";
+import { ApealCreatorCommand } from "./ApealCreator.cmd";
+const { Subcommand, String, User } = ApplicationCommandOptionType;
 
 export default new SlashCommandStructure({
     name: "embeds",
@@ -42,8 +44,8 @@ export default new SlashCommandStructure({
     usage: "/embeds <subcommand>",
     options: [
         {
-            name: "send-embed",
-            description: "Envía un embed de la lista.",
+            name: "send-embed-1",
+            description: "Envía un embed de la primera página.",
             type: Subcommand,
             options: [
                 {
@@ -147,8 +149,31 @@ export default new SlashCommandStructure({
                         {
                             name: "Información de Karaoke",
                             value: "info-karaoke"
+                        },
+                        {
+                            name: "Información de Apelaciones",
+                            value: "info-apeal"
                         }
-                    ]
+                    ].sort((a, b) => a.name.localeCompare(b.name))
+                }
+            ]
+        },
+        {
+            name: "send-embed-2",
+            description: "Envía un embed de la segunda página.",
+            type: Subcommand,
+            options: [
+                {
+                    name: "embed",
+                    description: "Nombre del embed a enviar.",
+                    type: String,
+                    required: true,
+                    choices: [
+                        {
+                            name: "Creador de Apelaciones",
+                            value: "creator-apeal"
+                        }
+                    ].sort((a, b) => a.name.localeCompare(b.name))
                 }
             ]
         },
@@ -190,6 +215,38 @@ export default new SlashCommandStructure({
                             value: "normal"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            name: "send-lagging-boost-embeds",
+            description: "Envía los embeds de boost atrasados.",
+            type: Subcommand,
+            options: [
+                {
+                    name: "type",
+                    description: "Tipo de envío.",
+                    type: String,
+                    required: true,
+                    choices: [
+                        {
+                            name: "Último",
+                            value: "last"
+                        },
+                        {
+                            name: "Usuario",
+                            value: "user"
+                        },
+                        {
+                            name: "Todos",
+                            value: "all"
+                        }
+                    ]
+                },
+                {
+                    name: "user",
+                    description: "Usuario a enviar.",
+                    type: User
                 }
             ]
         }
@@ -290,7 +347,18 @@ export default new SlashCommandStructure({
                     "info-sharpy": async () =>
                         await SharpyInfoCommand({ Sharpy, interaction }),
                     "info-karaoke": async () =>
-                        await InfoKaraokeCommand({ Sharpy, interaction })
+                        await InfoKaraokeCommand({ Sharpy, interaction }),
+                    "info-apeal": async () =>
+                        await InfoApealCommand({ Sharpy, interaction })
+                }[embed as keyof typeof CommandToExecute];
+                if (CommandToExecute) await CommandToExecute();
+                else await interaction.followUp("No se ha encontrado el embed.");
+            },
+            "send-embed-2": async () => {
+                const embed = Int.getString("embed");
+                const CommandToExecute = {
+                    "creator-apeal": async () =>
+                        await ApealCreatorCommand({ Sharpy, interaction })
                 }[embed as keyof typeof CommandToExecute];
                 if (CommandToExecute) await CommandToExecute();
                 else await interaction.followUp("No se ha encontrado el embed.");
@@ -307,7 +375,7 @@ export default new SlashCommandStructure({
                 await SendTagCommand({ Sharpy, interaction, message, choice });
             },
             "send-lagging-boost-embeds": async () =>
-                SendLaggingBoostEmbedsCommand({ Sharpy, interaction })
+                SendLaggingBoostEmbedsCommand({ Sharpy, interaction, options: Int })
         };
 
         const CommandToExecute = IntMap[subCommand as keyof typeof IntMap];

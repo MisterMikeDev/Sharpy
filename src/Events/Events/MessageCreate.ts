@@ -1,10 +1,4 @@
-import {
-    EmbedBuilder,
-    Message,
-    PermissionFlagsBits,
-    PermissionsBitField,
-    TextChannel
-} from "discord.js";
+import { Message, PermissionFlagsBits, PermissionsBitField } from "discord.js";
 import { Event } from "../../Interfaces";
 import { BannedWords } from "../../Data/Data";
 import { Config } from "../../Data/Config";
@@ -76,37 +70,18 @@ export const event: Event = {
 
             if (!xpUser) await Db.CreateUser(Sharpy, messageMember.id);
 
-            const { leveledUp, message: levelUpMessage } = await Db.AddXpToUser(
+            const { leveledUp, level } = await Db.AddXpToUser(
                 Sharpy,
                 messageMember.id,
                 xp
             );
 
-            if (leveledUp && levelUpMessage) {
-                const channel = (await Sharpy.channels.fetch(
-                    Config.DiscordBot.EchosOfTalent.channels.Niveles
-                )) as TextChannel;
-
-                if (!channel) return;
-
-                channel.send({
-                    content: `<@${messageMember.id}>`,
-                    embeds: [
-                        new EmbedBuilder()
-                            .setTitle("🎊 ¡Has subido de nivel! 🎊")
-                            .setDescription(`🎉 ${levelUpMessage} 🎉`)
-                            .setColor("#550000")
-                            .setFooter({
-                                text: "Echoes of Talent | Subida de nivel en TextChat",
-                                iconURL: messageMember.displayAvatarURL()
-                            })
-                            .setTimestamp()
-                    ],
-                    allowedMentions: {
-                        parse: ["users"]
-                    }
+            if (leveledUp)
+                Sharpy.emit("userLevelUp", {
+                    member: messageMember,
+                    type: "text",
+                    level
                 });
-            }
         }
     }
 };

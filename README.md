@@ -1,13 +1,13 @@
-<h1 align="center" style="text-align:center; font-weight: bold;">Sharpy</h1>
+<h1 align="center" style="text-align:center; font-weight: bold;">🎙️ Sharpy 🎧</h1>
 
 <table>
 <tr>
 <td>
-<img src="https://cdn.discordapp.com/attachments/1313715864511709184/1316216984458887291/ECHOES_1.gif?ex=6798dd57&is=67978bd7&hm=0066a2bbb96b11907679f03801032bdebed008a18b4122ff53ab98dccfee5ebc&" alt="Echoes of Talent" style="width: 300px; border-radius: 50%; margin-right: 20px;">
+<img src="https://cdn.discordapp.com/attachments/1313715864511709184/1316216984458887291/ECHOES_1.gif?ex=67a6b517&is=67a56397&hm=5c96b75c3bfef233064caffd2e249f062568c6cb8729361a328139fb89f1a6ce&" alt="Echoes of Talent" style="width: 300px; border-radius: 50%; margin-right: 20px;">
 </td>
 <td>
 
-[![GitHub issues](https://img.shields.io/github/issues/MisterMikeDev/Komi-Shouko.svg)](https://github.com/NombreDeUsuario/NombreDelRepositorio/issues)
+[![GitHub issues](https://img.shields.io/github/issues/MisterMikeDev/Sharpy.svg)](https://github.com/MisterMikeDev/Sharpy/issues)
 [![Discord.js](https://img.shields.io/badge/discord.js-v14.13.0-blue.svg)](https://discord.js.org)
 [![Project Status: Development](https://img.shields.io/badge/Project%20Status-Development-purple)](https://www.repostatus.org/#development)
 [![TypeScript](https://img.shields.io/badge/TypeScript-v5.2.2-blue.svg)](https://www.typescriptlang.org/)
@@ -20,7 +20,7 @@
 # ¿Que es Sharpy?
 
 <p style="text-wrap: balance;">
-    <span style="font-weight: bold; color: #550000;">Sharpy</span> es un bot multifuncial de Discord para el servidor de Echoes Of Talent
+    <span style="font-weight: bold; color: #aa0000;">Sharpy</span> es un bot multifuncial de Discord para el servidor de Echoes Of Talent
     que tiene como objetivo facilitar la interacción entre los miembros del servidor, ofecer actividadaes de karaokes, juegos, seguridad y mucho más.
 </p>
 
@@ -55,7 +55,7 @@ Attribution-NonCommercial-ShareAlike 4.0 Internacional. No se permite copiar o u
 código sin mencionar al autor original,
 [MrMikeDev#9081](https://discord.com/users/437308398845952001) en Discord o
 [MisterMikeDev](https:/github.com/MisterMikeDev) en Github, y al repositorio original del
-código, [Komi Shouko](https:/github.com/MisterMikeDev/Sharpy/tree/komi). Para ver una
-copia de esta licencia, visite
+código, [Sharpy](https://github.com/MisterMikeDev/Sharpy/blob/master/LICENSE). Para ver
+una copia de esta licencia, visite
 [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/4.0/) o envíe una carta a
 Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.

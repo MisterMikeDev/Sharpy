@@ -37,21 +37,20 @@ const AddXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
 
     if (!User) return { message: null, leveledUp: false };
 
-    const newXp = User.textXp + xp;
+    let newXp = User.textXp + xp;
     let newLevel = User.textLevel;
     let newXpForNextLevel = User.textXpForNextLevel;
     let leveledUp = false;
 
     while (newXp >= newXpForNextLevel) {
+        newXp -= newXpForNextLevel;
         newLevel++;
-        newXpForNextLevel *= 1.6;
+        newXpForNextLevel = Math.floor(newXpForNextLevel * 1.6);
         leveledUp = true;
     }
 
     await Sharpy.db.userXp.update({
-        where: {
-            userId
-        },
+        where: { userId },
         data: {
             textXp: newXp,
             textLevel: newLevel,
@@ -59,10 +58,7 @@ const AddXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
         }
     });
 
-    const message = leveledUp
-        ? `!Felicidades, has subido al nivel **${newLevel}**!`
-        : null;
-    return { message, leveledUp };
+    return { leveledUp, level: newLevel };
 };
 
 const RemoveXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
@@ -73,12 +69,12 @@ const RemoveXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
     const newXp = User.textXp - xp;
     let newLevel = User.textLevel;
     let newXpForNextLevel = User.textXpForNextLevel;
-    let leveledUp = false;
+    let leveledDown = false;
 
     while (newXp < 0) {
         newLevel--;
         newXpForNextLevel /= 1.6;
-        leveledUp = true;
+        leveledDown = true;
     }
 
     await Sharpy.db.userXp.update({
@@ -92,8 +88,7 @@ const RemoveXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
         }
     });
 
-    const message = leveledUp ? `Has bajado al nivel **${newLevel}**` : null;
-    return { message, leveledUp };
+    return { leveledDown, level: newLevel };
 };
 
 const RemoveUser = async (Sharpy: Sharpy, userId: string) => {
@@ -113,21 +108,20 @@ const AddVoiceXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
 
     if (!User) return { message: null, leveledUp: false };
 
-    const newXp = User.voiceXp + xp;
+    let newXp = User.voiceXp + xp;
     let newLevel = User.voiceLevel;
     let newXpForNextLevel = User.voiceXpForNextLevel;
     let leveledUp = false;
 
     while (newXp >= newXpForNextLevel) {
+        newXp -= newXpForNextLevel;
         newLevel++;
-        newXpForNextLevel *= 1.6;
+        newXpForNextLevel = Math.floor(newXpForNextLevel * 1.6);
         leveledUp = true;
     }
 
     await Sharpy.db.userXp.update({
-        where: {
-            userId
-        },
+        where: { userId },
         data: {
             voiceXp: newXp,
             voiceLevel: newLevel,
@@ -135,10 +129,7 @@ const AddVoiceXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
         }
     });
 
-    const message = leveledUp
-        ? `!Felicidades, has subido al nivel **${newLevel}** en voice chat!`
-        : null;
-    return { message, leveledUp };
+    return { leveledUp, level: newLevel };
 };
 
 const RemoveVoiceXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) => {
@@ -149,12 +140,12 @@ const RemoveVoiceXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) =
     const newXp = User.voiceXp - xp;
     let newLevel = User.voiceLevel;
     let newXpForNextLevel = User.voiceXpForNextLevel;
-    let leveledUp = false;
+    let leveledDown = false;
 
     while (newXp < 0) {
         newLevel--;
         newXpForNextLevel /= 1.6;
-        leveledUp = true;
+        leveledDown = true;
     }
 
     await Sharpy.db.userXp.update({
@@ -168,10 +159,7 @@ const RemoveVoiceXpToUser = async (Sharpy: Sharpy, userId: string, xp: number) =
         }
     });
 
-    const message = leveledUp
-        ? `Has bajado al nivel **${newLevel}** en voice chat`
-        : null;
-    return { message, leveledUp };
+    return { leveledDown, level: newLevel };
 };
 
 export const Db = {

@@ -14,7 +14,7 @@
         "path": "0.12.7",
         "prisma": "5.4.2"
     },
-    "description": "Komi is a discord bot multifuncional.",
+    "description": "Sharpy es un bot de discord creado para el servidor de Echoes of Talent.",
     "devDependencies": {
         "@eslint/js": "9.16.0",
         "@jest/globals": "29.7.0",
@@ -40,14 +40,17 @@
     "keywords": [],
     "license": "MIT",
     "main": "src/index.ts",
-    "name": "echo",
+    "name": "sharpy",
     "repository": "https://github.com/MisterMikeDev/Sharpy",
     "scripts": {
-        "start": "node dist/index.js",
+        "start": "bun run dist/index.js",
+        "start:prod": "bun run build && bun run dist/index.js",
         "dev": "nodemon",
         "dev:ts": "ts-node src/index.ts",
         "build": "tsc",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write ."
     },
     "version": "0.0.2"
 }

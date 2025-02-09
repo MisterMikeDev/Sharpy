@@ -12,7 +12,11 @@ type EventName =
     | "voteDuelEnd"
     | "voteReplicStart"
     | "voteReplicEnd"
-    | "closeTicket";
+    | "closeTicket"
+    | "userLevelUp"
+    | "userLevelDown"
+    | "userBanned"
+    | "userPardoned";
 
 export interface Event {
     name: EventName;

@@ -16,9 +16,9 @@ export const QueueEmbed = (Sharpy: Sharpy, queue: Queue) => {
     let ListString = "";
 
     if (list.length === 0) {
-        content = "La cola está vacía.";
+        content = "La lista está vacía.";
         currentTurn = "Nadie";
-        ListString = "La cola está vacía.";
+        ListString = "La lista está vacía.";
     } else {
         content = `Es el turno de <@${list[0].id}>`;
         currentTurn = `<@${list[0].id}>`;
@@ -42,14 +42,14 @@ export const QueueEmbed = (Sharpy: Sharpy, queue: Queue) => {
                 inline: true
             },
             {
-                name: "En la cola",
+                name: "En la lista",
                 value: `\`${list.length}\` persona${list.length === 1 ? "" : "s"}`,
                 inline: true
             }
         )
         .setFooter({
             iconURL: Sharpy.user?.displayAvatarURL(),
-            text: "Usa los botones para unirte a la cola"
+            text: "Usa los botones para unirte a la lista"
         });
 
     const components = [

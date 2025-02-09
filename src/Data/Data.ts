@@ -201,7 +201,7 @@ export const MusicArtistsInfo = {
     title: `${Emojis.Echo.TGNewsEmoji} ARTISTAS MUSICALES ${Emojis.Echo.TGNewsEmoji}`,
     description: `${Emojis.Echo.PrettyArrowR} ¡Bienvenido al canal de texto dedicado a compartir y escuchar material original. Nuestro objetivo es crear un espacio donde artistas emergentes en el ámbito musical puedan **Mostrar su talento, mejorar juntos y encontrar apoyo**. ${Emojis.Echo.Clapping}`,
     color: "#550000" as ColorResolvable,
-    image: "https://cdn.discordapp.com/attachments/1316230104355180545/1332550758347964488/Sin_titulo_700_x_500_px_1.png?ex=6797a45a&is=679652da&hm=db092b0a5e76cb6aef803745e24442174987871cb45c6de391b951c05ce4c39a&",
+    image: "https://cdn.discordapp.com/attachments/1178199527212199978/1336930419077287946/IMG_8110.png?ex=67a598fa&is=67a4477a&hm=bb2d514becb12553aca8b7013f15ff0c20b31eac15f82c2869a57e9745e829ae&",
     sections: [
         {
             title: `¿Qué puedes hacer aquí? ${Emojis.Echo.HmmmBaby}`,
@@ -460,7 +460,7 @@ export const SharpyInfoData = {
                     name: "Dinámicas exclusivas de karaoke",
                     prefix: `${Emojis.Echo.AnimatedArrowGreen} `,
                     values: [
-                        "**Cola de turnos (Queue)**: Organiza los turnos para cantar de manera ordenada y sin conflictos.",
+                        "**Lista de turnos (Queue)**: Organiza los turnos para cantar de manera ordenada y sin conflictos.",
                         "**Sistema de duelos**: Dos participantes se enfrentan y la comunidad vota por el ganador.",
                         "**Sistema de réplicas**: De 2 a 4 personas se enfrentan en turnos, y al final se realiza una votación para decidir al ganador."
                     ]
@@ -477,7 +477,7 @@ export const SharpyInfoData = {
                     values: [
                         "**No abuses de los bugs**: Si encuentras algún error en el bot, repórtalo utilizando el comando **`/dev report`**.",
                         "**Evita el spam de comandos**: Usa los comandos de manera responsable para no saturar el bot o el chat.",
-                        "**Respeta las dinámicas**: Sigue las instrucciones para las colas, duelos y réplicas, y evita sabotear la experiencia de otros usuarios.",
+                        "**Respeta las dinámicas**: Sigue las instrucciones para las listas, duelos y réplicas, y evita sabotear la experiencia de otros usuarios.",
                         "**Uso exclusivo para Echoes Of Talent**: Sharpy es un bot privado diseñado específicamente para esta comunidad. *(Cualquier  intento de uso externo del bot conllevara a un bloqueo de servidor)*"
                     ]
                 }
@@ -498,25 +498,25 @@ export const InfoKaraokeData = {
             title: "Lista de Turnos *(Queue)*",
             prefix: `${Emojis.Echo.ArrowBlue} `,
             description:
-                "La cola organiza los turnos para cantar de manera ordenada.\nEs obligatorio estar conectado a un canal de voz de karaoke para la dinamica.",
+                "La lista organiza los turnos para cantar de manera ordenada.\nEs obligatorio estar conectado a un canal de voz de karaoke para la dinamica.",
             fields: [
                 {
                     name: "Comandos principales",
                     prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
                     values: [
-                        "**`/karaoke start-queue`**: Crea una nueva cola de karaoke.",
-                        "**`/karaoke show-queue`**: Reenvía el mensaje de la cola en el canal de texto para evitar que se pierda en el historial."
+                        "**`/karaoke start-queue`**: Crea una nueva lista de karaoke.",
+                        "**`/karaoke show-queue`**: Reenvía el mensaje de la lista en el canal de texto para evitar que se pierda en el historial."
                     ]
                 },
                 {
                     name: "Funciones y reglas",
                     prefix: `${Emojis.Echo.AnimatedArrowRed} `,
                     values: [
-                        "Unirte y salir de la cola en cualquier momento.",
+                        "Unirte y salir de la lista en cualquier momento.",
                         "Finalizar tu turno.",
-                        "Puede reiniciar la cola usando comandos administrativos.",
+                        "Puede reiniciar la lista usando comandos administrativos.",
                         "Si eres staff, puedes saltar el turno actual se salta automáticamente.",
-                        "Si no eres staff, se inicia una votación. Si el **80% de los participantes restantes** en la cola votan a favor, el turno se saltará."
+                        "Si no eres staff, se inicia una votación. Si el **80% de los participantes restantes** en la lista votan a favor, el turno se saltará."
                     ]
                 }
             ]
@@ -764,6 +764,59 @@ export const StaffInfoRules = {
             ]
         }
     }
+};
+
+// Info para el embed de Inforacion de Apelaciones
+export const InfoApealData = {
+    title: `${Emojis.Echo.AdminHypeSquadPremium} Servidor de Apelaciones ECHOES OF TALENT - Revisión de Baneos ${Emojis.Echo.AdminHypeSquadPremium}`,
+    description: `**Bienvenido al servidor de apelaciones. Si has sido baneado de nuestra comunidad y deseas solicitar una revisión de tu caso. ${Emojis.Echo.Judge}**`,
+    color: "#550000" as ColorResolvable,
+    footer: "Agradecemos tu comprensión y esperamos que esta oportunidad sirva para mejorar la convivencia en nuestra comunidad. ¡Buena suerte!",
+    sections: [
+        {
+            title: "Requisitos para solicitar una apelación",
+            description:
+                "Para que tu apelación sea considerada, debes cumplir con los siguientes requisitos:",
+            prefix: `${Emojis.Echo.AnimatedArrowRed} `,
+            fields: [
+                "Haber esperado el tiempo que se te indico en la sanción.",
+                "No haber apelado anteriormente por el mismo baneo sin aportar nueva información.",
+                "Mantener una actitud respetuosa y madura durante todo el proceso.",
+                "Proporcionar la información requerida de forma clara y verídica *(con evidencias sobre alguna injusticia si es el caso)*."
+            ]
+        },
+        {
+            title: "Pasos para apelar tu baneo",
+            description: "",
+            prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
+            fields: [
+                `**Accede al canal de apelaciones:** En este servidor, dirígete a <#${Config.DiscordBot.EchosOfTalent.channels.CreateApeal}>`,
+                "Da clic en el botón de **Crear Apelación**.",
+                "Responde de manera honesta el formulario que se te proporcionará.",
+                "Confirma que se haya creado tu apelación llendo a la categoria que se creo con tu ID de usuario, donde habrá un canal de texto y otro de voz.",
+                "Espera a que un miembro del staff se ponga en contacto contigo para revisar tu caso.",
+                "En caso de que tu apelación sea aceptada, se te notificará y se te dará una segunda oportunidad en el servidor.",
+                "En caso de que tu apelación sea rechazada, deberás esperar 15 días antes de volver a intentarlo."
+            ]
+        },
+        {
+            title: "Espera la revisión del equipo de moderación",
+            prefix: `${Emojis.Echo.AnimatedArrowGreen} `,
+            fields: [
+                "Tu caso será evaluado en un plazo de 48 - 72 horas.",
+                "Recibirás una respuesta: Un Supervisor o rango superior que te notificará si tu apelación ha sido aceptada o rechazada."
+            ]
+        },
+        {
+            title: `${Emojis.Echo.BlueWarning} IMPORTANTE ${Emojis.Echo.BlueWarning}`,
+            prefix: "",
+            fields: [
+                "Si tu apelación es rechazada, deberás esperar 15 días antes de volver a intentarlo.",
+                "En caso de proporcionar información falsa, tu apelación será automáticamente denegada y podrías recibir una sanción mayor.",
+                "Las decisiones de nuestro Staff son las finales."
+            ]
+        }
+    ]
 };
 
 // Info para los AutoRoles de Colores

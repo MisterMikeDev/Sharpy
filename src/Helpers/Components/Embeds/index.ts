@@ -40,3 +40,5 @@ export { ManualEventEmbed } from "./ManualEventEmbed";
 export { InfoRockolaEmbed } from "./InfoRockolaEmbed";
 export { SharpyInfo } from "./SharpyInfo";
 export { InfoKaraoke } from "./InfoKaraoke";
+export { InfoApeal, CreateApealEmbed } from "./InfoApeal";
+export { ApealBanEmbed } from "./ApealBanEmbed";
