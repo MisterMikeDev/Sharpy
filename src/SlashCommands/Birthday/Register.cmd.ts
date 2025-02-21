@@ -2,7 +2,8 @@ import {
     CommandInteraction,
     CacheType,
     CommandInteractionOptionResolver,
-    TextChannel
+    TextChannel,
+    EmbedBuilder
 } from "discord.js";
 import { Sharpy } from "../../Client";
 import { Emojis } from "../../Data/Emojis";
@@ -91,9 +92,39 @@ export const RegisterCommand = async ({
             userAge--;
         }
 
+        const monthsSpanish = {
+            january: "Enero",
+            february: "Febrero",
+            march: "Marzo",
+            april: "Abril",
+            may: "Mayo",
+            june: "Junio",
+            july: "Julio",
+            august: "Agosto",
+            september: "Septiembre",
+            october: "Octubre",
+            november: "Noviembre",
+            december: "Diciembre"
+        };
+
         await birthdayChannel
             .send({
-                content: `> ### <@${interaction.user.id}> ha registrado su cumpleaños para el **${day}/${month}/${year}**.`
+                embeds: [
+                    new EmbedBuilder()
+                        .setAuthor({
+                            name: interaction.user.globalName!,
+                            iconURL: interaction.user.displayAvatarURL()
+                        })
+                        .setDescription(
+                            `> ### <@${interaction.user.id}> ha registrado su cumpleaños para el **${day}/${monthsSpanish[month]}/${year}**.`
+                        )
+                        .setColor("#550000")
+                        .setFooter({
+                            text: "Echoes Of Talent | Cumpleaños registrado",
+                            iconURL: Sharpy.user!.displayAvatarURL()
+                        })
+                        .setTimestamp()
+                ]
             })
             .catch(() => {});
 
