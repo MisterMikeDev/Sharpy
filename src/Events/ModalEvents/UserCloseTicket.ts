@@ -24,7 +24,7 @@ export const modalEvent: ModalEvent = {
                 );
         }
 
-        const guild = Sharpy.guilds.resolve(Config.DiscordBot.EchosOfTalent.id)!;
+        const guild = Sharpy.guilds.resolve(Config.DiscordBot.EchoesOfTalent.id)!;
         const channel = guild.channels.resolve(interactionChannel.id);
 
         if (!channel) {

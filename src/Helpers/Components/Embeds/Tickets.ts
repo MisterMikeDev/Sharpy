@@ -55,10 +55,8 @@ export const TicketsCreatedEmbed = async (Sharpy: Sharpy, id: string) => {
     const components: any[] = [];
 
     if (!resolution?.id) {
-        // Ticket está abierto
         if (!staffClaimed) {
-            // Caso: Ticket abierto pero no claimeado
-            content = `<@${authorId}> espera a que un miembro del <@&${Config.DiscordBot.EchosOfTalent.roles.Staff}> te atienda.`;
+            content = `<@${authorId}> espera a que un miembro del <@&${Config.DiscordBot.EchoesOfTalent.roles.Staff}> te atienda.`;
             embed = new EmbedBuilder()
                 .setAuthor({
                     name: "Ticket Creado",
@@ -83,7 +81,6 @@ export const TicketsCreatedEmbed = async (Sharpy: Sharpy, id: string) => {
                 ])
             );
         } else {
-            // Caso: Ticket abierto y claimeado
             content = `<@${authorId}> tu ticket está siendo atendido por <@${staffClaimed}>.`;
             embed = new EmbedBuilder()
                 .setAuthor({
@@ -110,7 +107,6 @@ export const TicketsCreatedEmbed = async (Sharpy: Sharpy, id: string) => {
             );
         }
     } else {
-        // Caso: Ticket cerrado
         const closedBy =
             resolution.staffId === authorId
                 ? `<@${authorId}> (Usuario)`

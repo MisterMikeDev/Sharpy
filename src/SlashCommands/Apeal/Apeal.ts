@@ -8,8 +8,9 @@ import {
 } from "discord.js";
 import { Emojis } from "../../Data/Emojis";
 import { Config } from "../../Data/Config";
-import { DefinitiveBanApealCommand } from "./DefinitiveBanApeal.cmd";
-import { PardonApealCommand } from "./PardonApeal.cmd";
+import { ShowApealsCommand } from "./ShowApeals.cmd";
+import { RemoveApealCommand } from "./RemoveApeal.cmd";
+import { CreatePreApealCommand } from "./CreatePreApeal.cmd";
 const { Subcommand } = ApplicationCommandOptionType;
 export default new SlashCommandStructure({
     name: "apeal",
@@ -17,27 +18,94 @@ export default new SlashCommandStructure({
     usage: "/apeal <subcommand>",
     options: [
         {
-            name: "pardon",
-            description: "Perdona a un usuario.",
+            name: "show-apeals",
+            description: "Muestra las apelaciones pendientes.",
             type: Subcommand,
             options: [
                 {
-                    name: "user",
-                    description: "Usuario a perdonar.",
-                    type: ApplicationCommandOptionType.User,
-                    required: true
+                    name: "type",
+                    description: "El tipo de apelaciones que quieres ver.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true,
+                    choices: [
+                        {
+                            name: "Pre-Apelaciones",
+                            value: "pre-apeals"
+                        },
+                        {
+                            name: "Apelaciones",
+                            value: "apeals"
+                        },
+                        {
+                            name: "Perdonados",
+                            value: "pardoned"
+                        }
+                    ]
+                },
+                {
+                    name: "page",
+                    description: "La página que quieres ver.",
+                    type: ApplicationCommandOptionType.Integer,
+                    required: false
+                },
+                {
+                    name: "user-id",
+                    description: "El ID del usuario que quieres ver.",
+                    type: ApplicationCommandOptionType.String,
+                    required: false
                 }
             ]
         },
         {
-            name: "definitive-ban",
-            description: "Banea a un usuario de forma definitiva.",
+            name: "remove-apeal",
+            description: "Elimina una apelación o pre-apelación.",
             type: Subcommand,
             options: [
                 {
-                    name: "user",
-                    description: "Usuario a banear.",
-                    type: ApplicationCommandOptionType.User,
+                    name: "id",
+                    description: "El ID de la apelación o pre-apelación.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true
+                },
+                {
+                    name: "type",
+                    description: "El tipo de apelación que quieres eliminar.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true,
+                    choices: [
+                        {
+                            name: "Pre-Apelación",
+                            value: "pre-apeal"
+                        },
+                        {
+                            name: "Apelación",
+                            value: "apeal"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "create-pre-apeal",
+            description: "Crea una pre-apelación.",
+            type: Subcommand,
+            options: [
+                {
+                    name: "user-id",
+                    description: "El ID del usuario.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true
+                },
+                {
+                    name: "time",
+                    description: "El tiempo que necesita esperar el usuario.",
+                    type: ApplicationCommandOptionType.String,
+                    required: true
+                },
+                {
+                    name: "reason",
+                    description: "La razón de la pre-apelación.",
+                    type: ApplicationCommandOptionType.String,
                     required: true
                 }
             ]
@@ -46,10 +114,6 @@ export default new SlashCommandStructure({
     run: async ({ Sharpy, interaction }) => {
         await interaction.deferReply();
         if (!interaction.guild) return;
-        if (interaction.guild.id !== Config.DiscordBot.EchosOfTalent.apealServerId)
-            return await interaction.followUp(
-                `${Emojis.Util.No} | No puedes usar este comando en este servidor.`
-            );
 
         const Int = interaction.options as CommandInteractionOptionResolver;
         const subCommand = Int.getSubcommand();
@@ -57,12 +121,13 @@ export default new SlashCommandStructure({
         const memberPermissions = interaction.member?.permissions;
         const requiredPermissions = [PermissionFlagsBits.Administrator];
         const requiredRoles = [
-            Config.DiscordBot.EchosOfTalent.roles.PoderesMisticos,
-            Config.DiscordBot.EchosOfTalent.roles.FounderApeal,
-            Config.DiscordBot.EchosOfTalent.roles.DirectorApeal,
-            Config.DiscordBot.EchosOfTalent.roles.AdminApeal,
-            Config.DiscordBot.EchosOfTalent.roles.SupervisorApeal,
-            Config.DiscordBot.EchosOfTalent.roles.ModeratorApeal
+            Config.DiscordBot.EchoesOfTalent.roles.PoderesMisticos,
+            Config.DiscordBot.EchoesOfTalent.roles.Founder,
+            Config.DiscordBot.EchoesOfTalent.roles.FounderApeal,
+            Config.DiscordBot.EchoesOfTalent.roles.Director,
+            Config.DiscordBot.EchoesOfTalent.roles.DirectorApeal,
+            Config.DiscordBot.EchoesOfTalent.roles.Admin,
+            Config.DiscordBot.EchoesOfTalent.roles.AdminApeal
         ];
 
         const permissions =
@@ -92,13 +157,14 @@ export default new SlashCommandStructure({
         }
 
         const IntMap = {
-            pardon: async () => {
-                const user = Int.getUser("user", true);
-                await PardonApealCommand({ Sharpy, interaction, user });
+            "show-apeals": async () => {
+                await ShowApealsCommand({ Sharpy, interaction, options: Int });
             },
-            "definitive-ban": async () => {
-                const user = Int.getUser("user", true);
-                await DefinitiveBanApealCommand({ Sharpy, interaction, user });
+            "remove-apeal": async () => {
+                await RemoveApealCommand({ Sharpy, interaction, options: Int });
+            },
+            "create-pre-apeal": async () => {
+                await CreatePreApealCommand({ Sharpy, interaction, options: Int });
             }
         };
 

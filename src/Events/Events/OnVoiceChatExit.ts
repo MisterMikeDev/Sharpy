@@ -2,11 +2,7 @@ import { ChannelType, Message, TextChannel, VoiceState } from "discord.js";
 import { Event } from "../../Interfaces";
 import { TurnType } from "../../Interfaces/Other/Duel";
 import { Db } from "../../Helpers/Db/Replic";
-import {
-    CalcXPForTimeOnVoiceChat,
-    GetCountOfBoostThisServer,
-    sleep
-} from "../../Helpers";
+import { CalcXPForTimeOnVoiceChat, GetCountOfBoostThisServer } from "../../Helpers";
 
 export const event: Event = {
     name: "voiceStateUpdate",
@@ -95,13 +91,6 @@ export const event: Event = {
                 const runAwayReplic = await Db.RunAwayReplic(Sharpy, replicId, userId);
 
                 await Sharpy.UpdateReplicInCurrentChannel(runAwayReplic!.channelId);
-
-                sleep(5000)
-                    .then(
-                        async () =>
-                            await Db.RemoveReplicById(Sharpy, replicId).catch(() => {})
-                    )
-                    .catch(() => {});
             });
         }
     }

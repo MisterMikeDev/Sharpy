@@ -6,6 +6,7 @@ import {
 import { ButtonsId, GetCountOfBoostThisServer } from "../../Helpers";
 import { ButtonEvent } from "../../Interfaces";
 import { Emojis } from "../../Data/Emojis";
+import { Config } from "../../Data/Config";
 
 export const buttonEvent: ButtonEvent = {
     id: ButtonsId.SkipQueue,
@@ -19,27 +20,17 @@ export const buttonEvent: ButtonEvent = {
         const userIsBoosterLvl2 = GetCountOfBoostThisServer(interactionMember) >= 2;
 
         if (!currentQueue) {
-            return await interaction
-                .followUp({
-                    content: `${Emojis.Util.No} | No hay ninguna lista en este canal.`
-                })
-                .then((int) => {
-                    setTimeout(async () => {
-                        await int.delete().catch(() => {});
-                    }, 5000);
-                });
+            return await interaction.followUp({
+                content: `${Emojis.Util.No} | No hay ninguna lista en este canal.`,
+                ephemeral: true
+            });
         }
 
         if (currentQueue.list[0].id === interactionUser.id) {
-            return await interaction
-                .followUp({
-                    content: `${Emojis.Util.No} | No puedes votar para saltarte a ti mismo.`
-                })
-                .then((int) => {
-                    setTimeout(async () => {
-                        await int.delete().catch(() => {});
-                    }, 5000);
-                });
+            return await interaction.followUp({
+                content: `${Emojis.Util.No} | No puedes votar para saltarte a ti mismo.`,
+                ephemeral: true
+            });
         }
 
         const memberPermissions = interactionMember.permissions;
@@ -51,13 +42,13 @@ export const buttonEvent: ButtonEvent = {
 
         const requiredPermissions = [PermissionFlagsBits.Administrator];
         const requiredRoles = [
-            "1308432429824086026", // Poderes misticos
-            "1307748890254250064", // Founder
-            "1307804113425272994", // Director
-            "1312909219728593018", // Programador
-            "1312909148110717059", // Admin
-            "1312909103424606279", // Supervisor
-            "1312909535169744956" // Moderator
+            Config.DiscordBot.EchoesOfTalent.roles.PoderesMisticos,
+            Config.DiscordBot.EchoesOfTalent.roles.Founder,
+            Config.DiscordBot.EchoesOfTalent.roles.Director,
+            Config.DiscordBot.EchoesOfTalent.roles.Programador,
+            Config.DiscordBot.EchoesOfTalent.roles.Admin,
+            Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
+            Config.DiscordBot.EchoesOfTalent.roles.Moderator
         ];
 
         const hasRequiredPermissions = requiredPermissions.some((permission) =>
@@ -85,15 +76,10 @@ export const buttonEvent: ButtonEvent = {
             Sharpy.ModifyQueue(interactionChannel.id, modifyQueue.list);
             Sharpy.UpdateQueueInCurrentChannel(interactionChannel.id);
 
-            return await interaction
-                .followUp({
-                    content: `${Emojis.Util.Yes} | Saltando turno directamente.`
-                })
-                .then((int) => {
-                    setTimeout(async () => {
-                        await int.delete().catch(() => {});
-                    }, 5000);
-                });
+            return await interaction.followUp({
+                content: `${Emojis.Util.Yes} | Saltando turno directamente.`,
+                ephemeral: true
+            });
         }
 
         const alreadyVoted = currentQueue.skipVoteList.some(
@@ -101,15 +87,10 @@ export const buttonEvent: ButtonEvent = {
         );
 
         if (alreadyVoted) {
-            return await interaction
-                .followUp({
-                    content: `${Emojis.Util.No} | Ya has votado para saltar el turno.`
-                })
-                .then((int) => {
-                    setTimeout(async () => {
-                        await int.delete().catch(() => {});
-                    }, 5000);
-                });
+            return await interaction.followUp({
+                content: `${Emojis.Util.No} | Ya has votado para saltar el turno.`,
+                ephemeral: true
+            });
         }
 
         const voteWeight = userIsBoosterLvl2 ? 2 : 1;
@@ -141,14 +122,9 @@ export const buttonEvent: ButtonEvent = {
             followUpMessage = `${Emojis.Util.Yes} | El turno ha sido saltado debido a los votos.`;
         }
 
-        return await interaction
-            .followUp({
-                content: followUpMessage
-            })
-            .then((int) => {
-                setTimeout(async () => {
-                    await int.delete().catch(() => {});
-                }, 5000);
-            });
+        return await interaction.followUp({
+            content: followUpMessage,
+            ephemeral: true
+        });
     }
 };

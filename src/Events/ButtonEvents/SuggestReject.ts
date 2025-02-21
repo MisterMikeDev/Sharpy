@@ -12,7 +12,8 @@ export const buttonEvent: ButtonEvent = {
         const messageId = interaction.message.id!;
 
         if (
-            interactionChannel.id !== Config.DiscordBot.EchosOfTalent.channels.Sugerencias
+            interactionChannel.id !==
+            Config.DiscordBot.EchoesOfTalent.channels.Sugerencias
         )
             return await interaction.followUp({
                 content: `${Emojis.Util.No} | No puedes usar este botón en este canal`

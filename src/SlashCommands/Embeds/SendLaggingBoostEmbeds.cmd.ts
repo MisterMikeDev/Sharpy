@@ -24,7 +24,7 @@ export const SendLaggingBoostEmbedsCommand = async ({
     const user = options.getUser("user");
 
     const channel = (await Sharpy.channels.fetch(
-        Config.DiscordBot.EchosOfTalent.channels.Boost
+        Config.DiscordBot.EchoesOfTalent.channels.Boost
     )) as TextChannel;
 
     const messages = (await channel!.messages.fetch())

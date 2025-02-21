@@ -20,9 +20,9 @@ export const StaffCommand = async ({
         categoryName = FixedName(category);
         teamIds = EchoesTeam[category];
     } else {
-        const StaffRoleId = Config.DiscordBot.EchosOfTalent.roles.Staff;
+        const StaffRoleId = Config.DiscordBot.EchoesOfTalent.roles.Staff;
         const members = await Sharpy.guilds
-            .resolve(Config.DiscordBot.EchosOfTalent.id)!
+            .resolve(Config.DiscordBot.EchoesOfTalent.id)!
             .members.fetch();
 
         categoryName = "Staff";

@@ -10,7 +10,7 @@ export const event: Event = {
 
         await Db.DeleteTicketByIdWithReference(Sharpy, ticket.id);
 
-        const guild = Sharpy.guilds.resolve(Config.DiscordBot.EchosOfTalent.id);
+        const guild = Sharpy.guilds.resolve(Config.DiscordBot.EchoesOfTalent.id);
         if (!guild) return;
 
         const channelToDelete = guild.channels.cache.get(ticket.channelId);

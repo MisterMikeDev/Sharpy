@@ -26,7 +26,7 @@ export const CreateApealEmbed = ({ Sharpy }: { Sharpy: Sharpy }) => {
     const embed = new EmbedBuilder()
         .setColor("#550000")
         .setDescription(
-            `# ${Emojis.Echo.Judge} ¡Crea una Apelación! ${Emojis.Echo.Judge}\nPara crear una apelación, te pedimos que primero leas la información de <#${Config.DiscordBot.EchosOfTalent.channels.InfoApeals}>.\n\n> ${Emojis.Echo.AnimatedArrowRed} Una vez leída, puedes dar click en el botón de abajo para crear una apelación.`
+            `# ${Emojis.Echo.Judge} ¡Crea una Apelación! ${Emojis.Echo.Judge}\nPara crear una apelación, te pedimos que primero leas la información de <#${Config.DiscordBot.EchoesOfTalent.channels.InfoApeals}>.\n\n> ${Emojis.Echo.AnimatedArrowRed} Una vez leída, puedes dar click en el botón de abajo para crear una apelación.`
         )
         .setFooter({
             text: "Echoes of Talent | Crear Apelación",

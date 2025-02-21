@@ -28,18 +28,17 @@ export const BanCommand = async ({
     const userId = options.getString("user-id");
     const reason = options.getString("reason") || "No se especificó una razón.";
     const timeNeededToAppeal = options.getString("time") || "3d";
+    const canApeal = options.getBoolean("can-apeal") || false;
     const guild = interaction.guild!;
 
     const memberPermissions = interaction.member?.permissions;
     const requiredPermissions = [PermissionFlagsBits.Administrator];
     const requiredRoles = [
-        Config.DiscordBot.EchosOfTalent.roles.PoderesMisticos,
-        Config.DiscordBot.EchosOfTalent.roles.Founder,
-        Config.DiscordBot.EchosOfTalent.roles.Director,
-        Config.DiscordBot.EchosOfTalent.roles.Programador,
-        Config.DiscordBot.EchosOfTalent.roles.Admin,
-        Config.DiscordBot.EchosOfTalent.roles.Supervisor,
-        Config.DiscordBot.EchosOfTalent.roles.Moderator
+        Config.DiscordBot.EchoesOfTalent.roles.PoderesMisticos,
+        Config.DiscordBot.EchoesOfTalent.roles.Founder,
+        Config.DiscordBot.EchoesOfTalent.roles.Director,
+        Config.DiscordBot.EchoesOfTalent.roles.Programador,
+        Config.DiscordBot.EchoesOfTalent.roles.Admin
     ];
 
     const permissions =
@@ -110,19 +109,21 @@ export const BanCommand = async ({
             reason
         });
 
-        await member.user
-            .send({
-                content: "Has sido baneado de **Echoes of Talent**",
-                embeds: [embed]
-            })
-            .then(async () => {
-                preapeal = await Db.CreatePreApeal(Sharpy, {
-                    userId: member.id,
-                    reason,
-                    timeNeededToApeal: time
-                });
-            })
-            .catch(() => {});
+        if (canApeal) {
+            await member.user
+                .send({
+                    content: "Has sido baneado de **Echoes of Talent**",
+                    embeds: [embed]
+                })
+                .then(async () => {
+                    preapeal = await Db.CreatePreApeal(Sharpy, {
+                        userId: member.id,
+                        reason,
+                        timeNeededToApeal: time
+                    });
+                })
+                .catch(() => {});
+        }
 
         await guild.members.ban(member, { reason });
 

@@ -1,13 +1,11 @@
 import { Emojis } from "../../Data/Emojis";
-import { ButtonsId } from "../../Helpers";
+import { ApealModal, ButtonsId, ResponseEmbed } from "../../Helpers";
 import { Db } from "../../Helpers/Db/Apeals";
 import { ButtonEvent } from "../../Interfaces";
 
 export const buttonEvent: ButtonEvent = {
     id: ButtonsId.CreateApeal,
     run: async (Sharpy, interaction) => {
-        await interaction.deferUpdate();
-
         const user = interaction.user;
 
         const currentDate = new Date();
@@ -15,12 +13,28 @@ export const buttonEvent: ButtonEvent = {
 
         const userPreApeal = await Db.GetPreApealByUserId(Sharpy, user.id);
 
-        if (!userPreApeal)
-            return await interaction.followUp({
-                content: `${Emojis.Util.No} | No tienes un baneo activo.`
+        if (!userPreApeal) {
+            return await interaction.reply({
+                content: `${Emojis.Util.No} | No tienes un baneo activo.`,
+                ephemeral: true
             });
+        }
 
-        // TimeNeededToApeal es el tiempo minimo que tiene que esperar para poder hacer una apelacion, si el tiempo actual es menor al tiempo que tiene que esperar, entonces no puede hacer una apelacion.
+        const apeal = await Db.GetApealByUserId(Sharpy, interaction.user.id);
+
+        if (apeal) {
+            return await interaction.reply({
+                embeds: [
+                    ResponseEmbed({
+                        type: "error",
+                        message: "Ya tienes una apealación creada.",
+                        emoji: Emojis.Util.No
+                    })
+                ],
+                ephemeral: true
+            });
+        }
+
         const { timeNeededToApeal } = userPreApeal;
 
         const timeLeft = timeNeededToApeal - currentTimestamp;
@@ -33,11 +47,12 @@ export const buttonEvent: ButtonEvent = {
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            return await interaction.followUp({
-                content: `${Emojis.Util.No} | No puedes crear una nueva apelacion todavia.\n> Necesitas esperar **${days}d ${hours}h ${minutes}m ${seconds}s**.`
+            return await interaction.reply({
+                content: `${Emojis.Util.No} | No puedes crear una nueva apelacion todavia.\n> Necesitas esperar **${days}d ${hours}h ${minutes}m ${seconds}s**.`,
+                ephemeral: true
             });
         }
 
-        // await interaction.showModal();
+        await interaction.showModal(ApealModal);
     }
 };

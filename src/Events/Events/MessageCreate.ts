@@ -20,10 +20,10 @@ export const event: Event = {
         const requiredPermissions = [PermissionFlagsBits.Administrator];
 
         const requiredRoles = [
-            Config.DiscordBot.EchosOfTalent.roles.PoderesMisticos,
-            Config.DiscordBot.EchosOfTalent.roles.Founder,
-            Config.DiscordBot.EchosOfTalent.roles.Director,
-            Config.DiscordBot.EchosOfTalent.roles.Programador
+            Config.DiscordBot.EchoesOfTalent.roles.PoderesMisticos,
+            Config.DiscordBot.EchoesOfTalent.roles.Founder,
+            Config.DiscordBot.EchoesOfTalent.roles.Director,
+            Config.DiscordBot.EchoesOfTalent.roles.Programador
         ];
 
         const hasAdminPermission = permissions?.has(requiredPermissions);
@@ -51,7 +51,7 @@ export const event: Event = {
 
         // Sistema de XP
         const textXpAllowChannels = Object.values(
-            Config.DiscordBot.EchosOfTalent.xpTextChannels
+            Config.DiscordBot.EchoesOfTalent.xpTextChannels
         );
 
         if (textXpAllowChannels.includes(message.channel.id)) {

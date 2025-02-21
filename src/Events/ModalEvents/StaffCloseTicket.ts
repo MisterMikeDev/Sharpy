@@ -21,7 +21,7 @@ export const modalEvent: ModalEvent = {
             });
         }
 
-        const guild = Sharpy.guilds.resolve(Config.DiscordBot.EchosOfTalent.id)!;
+        const guild = Sharpy.guilds.resolve(Config.DiscordBot.EchoesOfTalent.id)!;
         const channel = guild.channels.resolve(interactionChannel.id);
 
         if (!channel) {
@@ -31,7 +31,7 @@ export const modalEvent: ModalEvent = {
             });
         }
 
-        const EOT = Config.DiscordBot.EchosOfTalent;
+        const EOT = Config.DiscordBot.EchoesOfTalent;
         const rolesThatCanModerateTickets = [
             EOT.roles.PoderesMisticos,
             EOT.roles.Founder,

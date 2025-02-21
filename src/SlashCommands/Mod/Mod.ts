@@ -6,6 +6,14 @@ import { SlashCommandStructure } from "../../Interfaces";
 import { TimeoutCommand } from "./Timeout.cmd";
 import { UntimeoutCommand } from "./Untimeout.cmd";
 import { BulkCommand } from "./Bulk.cmd";
+import { BanCommand } from "./Ban.cmd";
+import { ToggleLockCommand } from "./ToogleLock.cmd";
+import { KickCommand } from "./Kick.cmd";
+import { ReportCommand } from "./Report.cmd";
+import { WarnCommand } from "./Warn.cmd";
+import { UnWarnCommand } from "./UnWarn.cmd";
+import { GetWarnsCommand } from "./GetWarns.cmd";
+import { GetRandomUserCommand } from "./GetRandomUserInVoice.cmd";
 
 export default new SlashCommandStructure({
     name: "mod",
@@ -74,33 +82,30 @@ export default new SlashCommandStructure({
                 {
                     name: "user",
                     description: "Usuario que se baneará del servidor.",
-                    type: ApplicationCommandOptionType.User,
-                    required: true
+                    type: ApplicationCommandOptionType.User
+                },
+                {
+                    name: "user-id",
+                    description: "ID del usuario que se baneará del servidor.",
+                    type: ApplicationCommandOptionType.String
                 },
                 {
                     name: "reason",
                     description: "Razón del ban.",
                     type: ApplicationCommandOptionType.String
-                }
-            ]
-        },
-        {
-            name: "unban",
-            description: "Quita el ban a un usuario del servidor.",
-            type: ApplicationCommandOptionType.Subcommand,
-            options: [
+                },
                 {
-                    name: "user",
-                    description: "Usuario al que se le quitará el ban.",
-                    type: ApplicationCommandOptionType.User,
-                    required: true
+                    name: "time",
+                    description:
+                        "Tiempo para que el usuario pueda apelar en formato 2s, 2m, 2h, 2d.",
+                    type: ApplicationCommandOptionType.String
+                },
+                {
+                    name: "can-apeal",
+                    description: "Si el usuario puede apelar el ban.",
+                    type: ApplicationCommandOptionType.Boolean
                 }
             ]
-        },
-        {
-            name: "apeal",
-            description: "Apela un ban.",
-            type: ApplicationCommandOptionType.Subcommand
         },
         {
             name: "report",
@@ -144,10 +149,22 @@ export default new SlashCommandStructure({
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
-                    name: "user",
-                    description: "Usuario al que se le quitará la advertencia.",
-                    type: ApplicationCommandOptionType.User,
+                    name: "warn-id",
+                    description: "ID de la advertencia a quitar.",
+                    type: ApplicationCommandOptionType.String,
                     required: true
+                }
+            ]
+        },
+        {
+            name: "get-warns",
+            description: "Obtiene las advertencias de un usuario.",
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: "user",
+                    description: "Usuario del que se obtendrán las advertencias.",
+                    type: ApplicationCommandOptionType.User
                 }
             ]
         },
@@ -166,6 +183,7 @@ export default new SlashCommandStructure({
                     name: "type",
                     description: "Tipo de mensajes a eliminar.",
                     type: ApplicationCommandOptionType.String,
+                    required: true,
                     choices: [
                         {
                             name: "Todos",
@@ -193,13 +211,25 @@ export default new SlashCommandStructure({
             ]
         },
         {
-            name: "lock",
-            description: "Cierra un canal de texto.",
+            name: "toogle-lock",
+            description: "Bloquea o desbloquea un canal.",
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
                     name: "channel",
                     description: "Canal a cerrar.",
+                    type: ApplicationCommandOptionType.Channel
+                }
+            ]
+        },
+        {
+            name: "get-random-user",
+            description: "Obtiene un usuario aleatorio en un canal.",
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: "channel",
+                    description: "Canal para obtener el usuario.",
                     type: ApplicationCommandOptionType.Channel
                 }
             ]
@@ -213,15 +243,20 @@ export default new SlashCommandStructure({
                 await TimeoutCommand({ Sharpy, interaction, options: Int }),
             untimeout: async () =>
                 await UntimeoutCommand({ Sharpy, interaction, options: Int }),
-            kick: async () => interaction.reply("Subcomando en desarrollo."),
-            ban: async () => interaction.reply("Subcomando en desarrollo."),
-            unban: async () => interaction.reply("Subcomando en desarrollo."),
-            apeal: async () => interaction.reply("Subcomando en desarrollo."),
-            report: async () => interaction.reply("Subcomando en desarrollo."),
-            warn: async () => interaction.reply("Subcomando en desarrollo."),
-            unwarn: async () => interaction.reply("Subcomando en desarrollo."),
-            bulk: async () => BulkCommand({ Sharpy, interaction, options: Int }),
-            lock: async () => interaction.reply("Subcomando en desarrollo.")
+            kick: async () => await KickCommand({ Sharpy, interaction, options: Int }),
+            ban: async () => await BanCommand({ Sharpy, interaction, options: Int }),
+            report: async () =>
+                await ReportCommand({ Sharpy, interaction, options: Int }),
+            warn: async () => await WarnCommand({ Sharpy, interaction, options: Int }),
+            unwarn: async () =>
+                await UnWarnCommand({ Sharpy, interaction, options: Int }),
+            "get-warns": async () =>
+                await GetWarnsCommand({ Sharpy, interaction, options: Int }),
+            bulk: async () => await BulkCommand({ Sharpy, interaction, options: Int }),
+            "toogle-lock": async () =>
+                await ToggleLockCommand({ Sharpy, interaction, options: Int }),
+            "get-random-user": async () =>
+                await GetRandomUserCommand({ Sharpy, interaction, options: Int })
         };
 
         const CommandToExecute = IntMap[subCommand as keyof typeof IntMap];

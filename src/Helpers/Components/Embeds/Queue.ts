@@ -5,13 +5,15 @@ import {
     FinishQueueButton,
     ExitQueueButton,
     JoinQueueButton,
-    RestartQueueButton,
+    FocusQueueButton,
+    UnfocusQueueButton,
     SkipQueueButton
 } from "../Buttons";
 
 export const QueueEmbed = (Sharpy: Sharpy, queue: Queue) => {
-    const { list } = queue;
+    const { list, focus } = queue;
     let content = "";
+    const components = [] as any[];
     let currentTurn = "";
     let ListString = "";
 
@@ -52,17 +54,25 @@ export const QueueEmbed = (Sharpy: Sharpy, queue: Queue) => {
             text: "Usa los botones para unirte a la lista"
         });
 
-    const components = [
-        new ActionRowBuilder<ButtonBuilder>().addComponents([
-            JoinQueueButton,
-            ExitQueueButton,
-            FinishQueueButton
-        ]) as ActionRowBuilder<ButtonBuilder>,
-        new ActionRowBuilder<ButtonBuilder>().addComponents([
-            SkipQueueButton,
-            RestartQueueButton
-        ]) as ActionRowBuilder<ButtonBuilder>
-    ] as any;
+    if (list.length > 0) {
+        const commonButtons = [JoinQueueButton, ExitQueueButton, FinishQueueButton];
+        const focusButtons = focus ? UnfocusQueueButton : FocusQueueButton;
+
+        components.push(
+            new ActionRowBuilder<ButtonBuilder>().addComponents(commonButtons)
+        );
+
+        components.push(
+            new ActionRowBuilder<ButtonBuilder>().addComponents([
+                SkipQueueButton,
+                focusButtons
+            ])
+        );
+    } else {
+        components.push(
+            new ActionRowBuilder<ButtonBuilder>().addComponents([JoinQueueButton])
+        );
+    }
 
     return {
         content,

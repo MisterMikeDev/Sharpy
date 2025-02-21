@@ -20,11 +20,17 @@ const FinishQueueButton = new ButtonBuilder()
     .setLabel("Finish")
     .setStyle(ButtonStyle.Secondary);
 
-const RestartQueueButton = new ButtonBuilder()
-    .setCustomId(ButtonsId.RestartQueue)
-    .setEmoji("🔄")
-    .setLabel("Restart")
+const FocusQueueButton = new ButtonBuilder()
+    .setCustomId(ButtonsId.FocusQueue)
+    .setEmoji("🔍")
+    .setLabel("Focus")
     .setStyle(ButtonStyle.Secondary);
+
+const UnfocusQueueButton = new ButtonBuilder()
+    .setCustomId(ButtonsId.FocusQueue)
+    .setEmoji("🔍")
+    .setLabel("Unfocus")
+    .setStyle(ButtonStyle.Danger);
 
 const SkipQueueButton = new ButtonBuilder()
     .setCustomId(ButtonsId.SkipQueue)
@@ -36,6 +42,7 @@ export {
     ExitQueueButton,
     FinishQueueButton,
     JoinQueueButton,
-    RestartQueueButton,
+    FocusQueueButton,
+    UnfocusQueueButton,
     SkipQueueButton
 };

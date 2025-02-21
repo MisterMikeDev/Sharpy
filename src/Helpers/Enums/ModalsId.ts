@@ -6,7 +6,19 @@ export enum ModalsId {
     UserCloseTicketInput = "UserCloseTicketInput",
     UserCloseTicket = "UserCloseTicket",
     StaffCloseTicketInput = "StaffCloseTicketInput",
-    StaffCloseTicket = "StaffCloseTicket"
+    StaffCloseTicket = "StaffCloseTicket",
+
+    // Appeals
+    ApealSituation = "ApealSituation",
+    ApealCommitment = "ApealCommitment",
+    ApealCreate = "ApealCreate",
+    ApealCreatePardon = "ApealCreatePardon",
+    ApealCreateBan = "ApealCreateBan",
+    ApealCreateBanReason = "ApealCreateBanReason",
+    ApealCreatePardonReason = "ApealCreatePardonReason",
+    ApealVerify = "ApealVerifyIdInput",
+    ApealCreatePardonUserId = "ApealCreatePardonUserId",
+    ApealCreateBanUserId = "ApealCreateBanUserId"
 }
 
 export type ModalsType = ModalsId;

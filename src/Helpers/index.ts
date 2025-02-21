@@ -42,7 +42,8 @@ export {
     WelcomeEmbed,
     InfoApeal,
     ApealBanEmbed,
-    CreateApealEmbed
+    CreateApealEmbed,
+    ApealCreatedEmbed
 } from "./Components/Embeds";
 
 export {
@@ -52,7 +53,7 @@ export {
     JoinQueueButton,
     JoinReplic,
     NextTurnReplic,
-    RestartQueueButton,
+    FocusQueueButton,
     SkipQueueButton,
     StartReplic,
     VerifyCloseTicketButton,
@@ -71,7 +72,10 @@ export {} from "./Components/Menu";
 export {
     CreateTicketModal,
     UserCloseTicketModal,
-    StaffCloseTicketModal
+    StaffCloseTicketModal,
+    ApealModal,
+    PardonModal,
+    BanModal
 } from "./Components/Modals";
 
 export {

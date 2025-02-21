@@ -64,7 +64,7 @@ export const Rules = {
                 '**Respeto:**\nTrata bien a los demás, no se va a soportar a nadie con una actitud tóxica o abusiva (Insultos, acoso, burlas o comentarios discriminatorios). Este discord es para pasar un buen rato y compartir música. No hay porque ser malos con las demás personas. *(El staff, los mods y los fundadores también son personas y tienen su corazoncito, cuídalo)*\n"Trata a los demás como quieras ser tratado" - Mi mamá',
                 "**No hay debate:**\nEste no es un servidor de política ni de ideologías, todos podemos tener nuestras propias opiniones, pero no por eso tenemos que compartirlas. No vamos a aceptar comentarios discriminatorios de ninguna clase. No hablamos ni juzgamos ni política, ni religión, ideología o fanatismos.",
                 "**Es sobre música:**\nLa temática del servidor es clara, hay muchos canales para hablar de distintos temas, si no encuentras un canal para compartir lo que quieres, hay bastantes servers que pueden tener esa temática en especial, este no.",
-                `**Spam y promoción:**\nLas promociones son exclusivamente en los canales de <#${Config.DiscordBot.EchosOfTalent.channels.Perfiles}> y <#${Config.DiscordBot.EchosOfTalent.channels.MaterialMusical}>. Promociones o spam fuera de estos canales, será eliminada. No lo hagas, te van a regañar. Esta regla también va para el spam en general (mandar varias veces le mismo mensaje o etiquetar a la misma persona).`,
+                `**Spam y promoción:**\nLas promociones son exclusivamente en los canales de <#${Config.DiscordBot.EchoesOfTalent.channels.Perfiles}> y <#${Config.DiscordBot.EchoesOfTalent.channels.MaterialMusical}>. Promociones o spam fuera de estos canales, será eliminada. No lo hagas, te van a regañar. Esta regla también va para el spam en general (mandar varias veces le mismo mensaje o etiquetar a la misma persona).`,
                 `**Acoso:**\nCualquier forma de acoso no será tolerada. Compartir información personal de alguien más, hostigar por mensaje a moderadores o usuarios, difundir falsa información, cualquier cosa que haga a otra persona sentir incomoda no esta bien y no será permitido. ${Emojis.Echo.M9deomk9}`
             ]
         },
@@ -128,10 +128,10 @@ export const WelcomeInfo = {
         prefix: `${Emojis.Echo.AnimatedArrowBlue} `,
         i: [
             `Puedes unirte a KARAOKE 𝄞⨾𓍢ִ໋ para cantar en vivo y disfrutar de un ambiente divertido. ${Emojis.Echo.Music_Note_1}`,
-            `Pásate a <#${Config.DiscordBot.EchosOfTalent.channels.Anuncios}> para enterarte de concursos y eventos. Demuestra tu talento y gana premios. ${Emojis.Echo.Trophy}`,
-            `Nos interesa que revises las <#${Config.DiscordBot.EchosOfTalent.channels.Rules}> para mantenerte al tanto de nuestras normas. ${Emojis.Echo.DaRules}`,
-            `¡Personalizate! entra a <#${Config.DiscordBot.EchosOfTalent.channels.AutoRoles}> y <#${Config.DiscordBot.EchosOfTalent.channels.Presentacion}> para conocer tus gustos y más sobre ti. ${Emojis.Echo.AnimateCat}`,
-            `¡Ponte cómodo ${Emojis.Echo.Chillguy} agarra el micrófono y deja que la música fluya! Si tienes alguna queja o reporte, no dudes en contactar a nuestro equipo en <#${Config.DiscordBot.EchosOfTalent.channels.Tickets}>`
+            `Pásate a <#${Config.DiscordBot.EchoesOfTalent.channels.Anuncios}> para enterarte de concursos y eventos. Demuestra tu talento y gana premios. ${Emojis.Echo.Trophy}`,
+            `Nos interesa que revises las <#${Config.DiscordBot.EchoesOfTalent.channels.Rules}> para mantenerte al tanto de nuestras normas. ${Emojis.Echo.DaRules}`,
+            `¡Personalizate! entra a <#${Config.DiscordBot.EchoesOfTalent.channels.AutoRoles}> y <#${Config.DiscordBot.EchoesOfTalent.channels.Presentacion}> para conocer tus gustos y más sobre ti. ${Emojis.Echo.AnimateCat}`,
+            `¡Ponte cómodo ${Emojis.Echo.Chillguy} agarra el micrófono y deja que la música fluya! Si tienes alguna queja o reporte, no dudes en contactar a nuestro equipo en <#${Config.DiscordBot.EchoesOfTalent.channels.Tickets}>`
         ]
     },
 
@@ -172,15 +172,15 @@ export const PartersInfo = {
         {
             title: `**Acceso a Canales y Eventos Exclusivos.** ${Emojis.Echo.GatoHappyMeme}`,
             data: [
-                "**Canales Privados:** Tendrás acceso a áreas reservadas solo para Partners, ideales para networking, colaboraciones y conversaciones de alto nivel.",
-                "**Eventos especiales:** Participación en eventos exclusivos para Partners, como sesiones de mentoring, paneles de discusión, y actividades de networking.",
+                "**Canales Privados:** Tendrás acceso a áreas reservadas solo para Partners, colaboraciones y conversaciones de alto nivel.",
+                "**Eventos especiales:** Participación en eventos exclusivos para Partners, como sesiones de mentoring y paneles de discusión.",
                 "**Promoción en eventos del servidor:** Si organizas eventos o lanzamientos, la comunidad apoyará con difusión y participación activa."
             ]
         },
         {
             title: `Oportunidades de Crecimiento ${Emojis.Echo.Chillguy}`,
             data: [
-                "**Networking de alto nivel:** Conecta con otros Partners,colaboradores y networking.",
+                "**Colaboraciones:** Conecta con otros Partners y colaboradores.",
                 "**Colaboraciones personalizadas:** Oportunidad de trabajar junto a otros Partners en proyectos conjuntos o iniciativas del servidor.",
                 "**Feedback y mejora:** Recibe retroalimentación de calidad sobre tus proyectos o servicios por parte de otros miembros destacados o de otros partners."
             ]
@@ -201,7 +201,7 @@ export const MusicArtistsInfo = {
     title: `${Emojis.Echo.TGNewsEmoji} ARTISTAS MUSICALES ${Emojis.Echo.TGNewsEmoji}`,
     description: `${Emojis.Echo.PrettyArrowR} ¡Bienvenido al canal de texto dedicado a compartir y escuchar material original. Nuestro objetivo es crear un espacio donde artistas emergentes en el ámbito musical puedan **Mostrar su talento, mejorar juntos y encontrar apoyo**. ${Emojis.Echo.Clapping}`,
     color: "#550000" as ColorResolvable,
-    image: "https://cdn.discordapp.com/attachments/1178199527212199978/1336930419077287946/IMG_8110.png?ex=67a598fa&is=67a4477a&hm=bb2d514becb12553aca8b7013f15ff0c20b31eac15f82c2869a57e9745e829ae&",
+    image: "https://media.discordapp.net/attachments/1316230104355180545/1339054996628439140/image.png?ex=67ad53a5&is=67ac0225&hm=119acb5cad9ec83bc1d9f7810cd0c4d0765e81c77ce0e55f9149e0a1615360b0&=&format=webp&quality=lossless&width=1376&height=625",
     sections: [
         {
             title: `¿Qué puedes hacer aquí? ${Emojis.Echo.HmmmBaby}`,
@@ -226,9 +226,9 @@ export const MusicArtistsInfo = {
             title: `¿Qué beneficios obtengo? ${Emojis.Echo.ScottPilgrimRock}`,
             prefix: `${Emojis.Echo.AnimatedArrowBlue} `,
             list: [
-                `**Rol exclusivo:** Recibirás el rol de <@&${Config.DiscordBot.EchosOfTalent.roles.ArtistaMusical}> para destacar tu perfil en el servidor. ${Emojis.Echo.TGNewsEmoji}`,
-                `**Promoción sin restricciones:** Podrás hacer **spam** de tus obras originales en el canal de <#${Config.DiscordBot.EchosOfTalent.channels.MaterialMusical}>. ${Emojis.Echo.VinylRecord}`,
-                `**Concierto especial:** Tendrás la opción de organizar un **evento especial** para presentar tus obras originales. Contácta a un <@&${Config.DiscordBot.EchosOfTalent.roles.Supervisor}> para coordinar tu presentación. ${Emojis.Echo.GatoHappyMeme}`
+                `**Rol exclusivo:** Recibirás el rol de <@&${Config.DiscordBot.EchoesOfTalent.roles.ArtistaMusical}> para destacar tu perfil en el servidor. ${Emojis.Echo.TGNewsEmoji}`,
+                `**Promoción sin restricciones:** Podrás hacer **spam** de tus obras originales en el canal de <#${Config.DiscordBot.EchoesOfTalent.channels.MaterialMusical}>. ${Emojis.Echo.VinylRecord}`,
+                `**Concierto especial:** Tendrás la opción de organizar un **evento especial** para presentar tus obras originales. Contácta a un <@&${Config.DiscordBot.EchoesOfTalent.roles.Supervisor}> para coordinar tu presentación. ${Emojis.Echo.GatoHappyMeme}`
             ]
         }
     ],
@@ -240,7 +240,7 @@ export const GraphicArtistsInfo = {
     title: `${Emojis.Echo.PepeDrawing} ARTISTAS GRÁFICOS ${Emojis.Echo.ADrawing}`,
     description: `${Emojis.Echo.PrettyArrowR} ¡Bienvenido al canal de texto dedicado a compartir y escuchar material original. Nuestro objetivo es crear un espacio donde artistas emergentes en el ámbito gráfico/dibujo y puedan **Mostrar su talento, mejorar juntos y encontrar apoyo**. ${Emojis.Echo.Clapping}`,
     color: "#550000" as ColorResolvable,
-    image: "https://cdn.discordapp.com/attachments/1316230104355180545/1332550782486057021/5.png?ex=6797a460&is=679652e0&hm=f07c7e0af1e0db7c5ca08c5da92b5c17a9f58f860cecae7a256223c04119e31a&",
+    image: "https://media.discordapp.net/attachments/1316230104355180545/1339054856681295973/image.png?ex=67ad5384&is=67ac0204&hm=681d3951abcb31dc5a1e863a535d9c3445c4f42462d602026ac008690e6cf958&=&format=webp&quality=lossless&width=1376&height=625",
     sections: [
         {
             title: `¿Qué puedes hacer aquí? ${Emojis.Echo.HmmmBaby}`,
@@ -265,9 +265,9 @@ export const GraphicArtistsInfo = {
             title: `¿Qué beneficios obtengo? ${Emojis.Echo.ScottPilgrimRock}`,
             prefix: `${Emojis.Echo.AnimatedArrowBlue} `,
             list: [
-                `**Rol exclusivo:** Recibirás el rol de <@&${Config.DiscordBot.EchosOfTalent.roles.ArtistaGrafico}> para destacar tu perfil en el servidor. ${Emojis.Echo.TGNewsEmoji}`,
-                `**Promoción sin restricciones:** Podrás hacer **spam** de tus obras originales en el canal de <#${Config.DiscordBot.EchosOfTalent.channels.MaterialGrafico}>. ${Emojis.Echo.VinylRecord}`,
-                `**Haz un evento especial:** Tendrás la opción de organizar un **Evento o Podcast de arte** para presentar tus obras originales. Contácta a un <@&${Config.DiscordBot.EchosOfTalent.roles.Supervisor}> para coordinar tu presentación. ${Emojis.Echo.GatoHappyMeme}`
+                `**Rol exclusivo:** Recibirás el rol de <@&${Config.DiscordBot.EchoesOfTalent.roles.ArtistaGrafico}> para destacar tu perfil en el servidor. ${Emojis.Echo.TGNewsEmoji}`,
+                `**Promoción sin restricciones:** Podrás hacer **spam** de tus obras originales en el canal de <#${Config.DiscordBot.EchoesOfTalent.channels.MaterialGrafico}>. ${Emojis.Echo.VinylRecord}`,
+                `**Haz un evento especial:** Tendrás la opción de organizar un **Evento o Podcast de arte** para presentar tus obras originales. Contácta a un <@&${Config.DiscordBot.EchoesOfTalent.roles.Supervisor}> para coordinar tu presentación. ${Emojis.Echo.GatoHappyMeme}`
             ]
         }
     ],
@@ -307,7 +307,7 @@ export const ApplicationCriteriaInfo = {
             title: `CRITERIOS DE CREADOR DE EVENTOS ${Emojis.Echo.Announce}`,
             prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
             list: [
-                `¿Por qué te interesa postularte para <@&${Config.DiscordBot.EchosOfTalent.roles.CreadorDeEventos}>?`,
+                `¿Por qué te interesa postularte para <@&${Config.DiscordBot.EchoesOfTalent.roles.CreadorDeEventos}>?`,
                 "¿Como sería la forma en que le darías alcance a tu evento?",
                 "En base a la pregunta del formulario ''Propón un evento original que te gustaría organizar en el servidor'' Explícanos a detalle sobre este evento hipotético y como lo llevarás a cabo.",
                 "¿Cómo manejarías a los participantes en caso de un conflicto durante un evento?",
@@ -319,7 +319,7 @@ export const ApplicationCriteriaInfo = {
             title: `CRITERIOS DE ARTISTA MUSICAL ${Emojis.Echo.VinylRecord}`,
             prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
             list: [
-                `¿Por qué te gustaría ser <@&${Config.DiscordBot.EchosOfTalent.roles.ArtistaEmergente}> de **Echoes Of Talent**?`,
+                `¿Por qué te gustaría ser <@&${Config.DiscordBot.EchoesOfTalent.roles.ArtistaEmergente}> de **Echoes Of Talent**?`,
                 "¿Tienes registradas tus canciones? Y ¿Hay manera de comprobar de que tus canciones son tuyas?",
                 "¿Qué intenciones tienes con ser Artista Emergente de **Echoes Of Talent**?",
                 "Como Artista Emergente tienes la posibilidad de realizar un Evento/Concierto de tus obras, ¿Estás dispuesto/a a hacer algo así dentro de la comunidad?"
@@ -329,7 +329,7 @@ export const ApplicationCriteriaInfo = {
             title: `CRITERIOS DE ARTISTA GRÁFICO ${Emojis.Echo.PepeDrawing}`,
             prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
             list: [
-                `¿Por qué te gustaría ser <@&${Config.DiscordBot.EchosOfTalent.roles.ArtistaGrafico}> de **Echoes Of Talent**?`,
+                `¿Por qué te gustaría ser <@&${Config.DiscordBot.EchoesOfTalent.roles.ArtistaGrafico}> de **Echoes Of Talent**?`,
                 "¿Tienes marcas de agua o registradas tus obras? Y ¿Hay manera de comprobar de que son tuyas?",
                 "¿Qué intenciones tienes con ser Artista Gráfico de **Echoes Of Talent**?",
                 "Como Artista Gráfico tienes la posibilidad de realizar un Evento/Podcast o galería de arte de tus obras, ¿Estás dispuesto/a a hacer algo así dentro de la comunidad?"
@@ -590,37 +590,37 @@ export const Hierarchies = {
     prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
     roles: [
         {
-            title: `<@&${Config.DiscordBot.EchosOfTalent.roles.Founder}>`,
+            title: `<@&${Config.DiscordBot.EchoesOfTalent.roles.Founder}>`,
             description:
                 "Los fundadores son la máxima autoridad del servidor. Tienen acceso a todos los permisos y son responsables de la administración y dirección general del servidor. Su rol incluye la toma de decisiones críticas, la supervisión de todas las actividades y la garantía de que el servidor funcione sin problemas.",
             note: null
         },
         {
-            title: `<@&${Config.DiscordBot.EchosOfTalent.roles.Director}>`,
+            title: `<@&${Config.DiscordBot.EchoesOfTalent.roles.Director}>`,
             description:
                 "Personas de confianza que comparten las mismas responsabilidades de los Founders. Ayudan en la toma de decisiones del servidor, así como el costeo y mantenimiento de este. Los directores tienen todos los permisos y pueden tomar decisiones para el servidor en caso de la ausencia total de los Founders. Los directores por su parte se encargarán de ascender a los usuarios en la jerarquía del Staff y elegirlos debidamente, así como denigrar a los que no cumplan con sus roles dentro del Staff.",
             note: "Los directores se pueden encargar de la revisión de todas las postulaciones."
         },
         {
-            title: `<@&${Config.DiscordBot.EchosOfTalent.roles.Admin}>`,
+            title: `<@&${Config.DiscordBot.EchoesOfTalent.roles.Admin}>`,
             description:
                 "Los Administradores serán los encargados de supervisar los roles por debajo de la jerarquía en la que se encuentra del Staff, es decir: Supervisor, Moderador y Ayudante. Los Administradores serán capaces de tomar decisiones con respecto a eventos, gestionar permisos y solucionar problemas técnicos del servidor, todo en conjunto con los DIRECTORES y demás administradores. En caso de la ausencia de los FOUNDERS o DIRECTORES, los Administradores pueden tomar decisiones en caso de ser necesario. También podrán ascender o denigrar los roles de: Ayudante, Moderador y Supervisor.",
-            note: `Los Admins pueden admitir solicitudes de Eventos de <@&${Config.DiscordBot.EchosOfTalent.roles.CreadorDeEventos}>, se encargan de administrar las postulaciones de <@&${Config.DiscordBot.EchosOfTalent.roles.ArtistaGrafico}> y <@&${Config.DiscordBot.EchosOfTalent.roles.ArtistaMusical}>, <@&${Config.DiscordBot.EchosOfTalent.roles.Disenador}>, todas excepto <@&${Config.DiscordBot.EchosOfTalent.roles.Partner}>.`
+            note: `Los Admins pueden admitir solicitudes de Eventos de <@&${Config.DiscordBot.EchoesOfTalent.roles.CreadorDeEventos}>, se encargan de administrar las postulaciones de <@&${Config.DiscordBot.EchoesOfTalent.roles.ArtistaGrafico}> y <@&${Config.DiscordBot.EchoesOfTalent.roles.ArtistaMusical}>, <@&${Config.DiscordBot.EchoesOfTalent.roles.Disenador}>, todas excepto <@&${Config.DiscordBot.EchoesOfTalent.roles.Partner}>.`
         },
         {
-            title: `<@&${Config.DiscordBot.EchosOfTalent.roles.Supervisor}>`,
+            title: `<@&${Config.DiscordBot.EchoesOfTalent.roles.Supervisor}>`,
             description:
                 "Los Supervisores se encargan de coordinar las funciones de los moderadores y ayudantes, así como de solucionar problemas, gestionar canales, apelaciones y reportes dentro del servidor. Los supervisores son capaces de realizar: warneos, silenciar, aislar y banear a los usuarios que no cumplan con las reglas. A pesar de sus funciones no son capaces de tomar decisiones dentro del servidor, pero cumplen con un rol importante al mantener un control sobre la interacción de los Moderadores y Ayudantes.",
-            note: `Los Supervisores solo se encargan de administrar las solicitudes de postulantes de <@&${Config.DiscordBot.EchosOfTalent.roles.Staff}> y también <@&${Config.DiscordBot.EchosOfTalent.roles.Disenador}>`
+            note: `Los Supervisores solo se encargan de administrar las solicitudes de postulantes de <@&${Config.DiscordBot.EchoesOfTalent.roles.Staff}> y también <@&${Config.DiscordBot.EchoesOfTalent.roles.Disenador}>`
         },
         {
-            title: `<@&${Config.DiscordBot.EchosOfTalent.roles.Moderator}>`,
+            title: `<@&${Config.DiscordBot.EchoesOfTalent.roles.Moderator}>`,
             description:
                 "Los moderadores vigilan el cumplimiento de las reglas, responden a problemas en el chat, y maneja sanciones leves, es decir, tienen permisos de silenciar, aislar, realizar advertencias a los usuarios que no cumplan con las reglas. También los moderadores pueden responder y atender tickets a usuarios, realizar warns, aislar usuarios, silenciar, esondecer o mover a los usuarios, sin embargo no pueden realizar baneos, en dado caso deberán reportarse con un supervisor, para mantener un orden.",
             note: null
         },
         {
-            title: `<@&${Config.DiscordBot.EchosOfTalent.roles.Ayudante}>`,
+            title: `<@&${Config.DiscordBot.EchoesOfTalent.roles.Ayudante}>`,
             description:
                 "El ayudante tiene permisos limitados para responder preguntas, reportar problemas y ayudar a los usuarios, este rol se le otorga a los miembros en entrenamiento para ser moderador. Los ayudantes pueden silenciar, ensordecer o mover a los usuarios dentro de un canal de voz.",
             note: null
@@ -699,7 +699,7 @@ export const StaffEventRules = {
     rules: [
         {
             title: "Cronogramas y Planificación",
-            description: `Todos los eventos deben ser propuestos en el canal <#${Config.DiscordBot.EchosOfTalent.channels.Sugerencias}>, las propuestas deben incluir: nombre del evento, objetivo, premios propuestos, fecha, hora, duración estimada, y descripción general. Los eventos deben ser aprobados por un <@&${Config.DiscordBot.EchosOfTalent.roles.Admin}> antes de ser anunciados.`
+            description: `Todos los eventos deben ser propuestos en el canal <#${Config.DiscordBot.EchoesOfTalent.channels.Sugerencias}>, las propuestas deben incluir: nombre del evento, objetivo, premios propuestos, fecha, hora, duración estimada, y descripción general. Los eventos deben ser aprobados por un <@&${Config.DiscordBot.EchoesOfTalent.roles.Admin}> antes de ser anunciados.`
         },
         {
             title: "Organización",
@@ -708,7 +708,7 @@ export const StaffEventRules = {
         },
         {
             title: "Anuncios",
-            description: `Los anuncios deben realizarlos un <@&${Config.DiscordBot.EchosOfTalent.roles.CreadorDeEventos}> o <@&${Config.DiscordBot.EchosOfTalent.roles.Admin}>, el anuncio se lanzarán dos Flyers uno al menos 3 días antes de la fecha del evento y otro el día designado del evento, en el canal <#${Config.DiscordBot.EchosOfTalent.channels.Anuncios}>`
+            description: `Los anuncios deben realizarlos un <@&${Config.DiscordBot.EchoesOfTalent.roles.CreadorDeEventos}> o <@&${Config.DiscordBot.EchoesOfTalent.roles.Admin}>, el anuncio se lanzarán dos Flyers uno al menos 3 días antes de la fecha del evento y otro el día designado del evento, en el canal <#${Config.DiscordBot.EchoesOfTalent.channels.Anuncios}>`
         },
         {
             title: "Preparación Previa al Evento",
@@ -790,7 +790,7 @@ export const InfoApealData = {
             description: "",
             prefix: `${Emojis.Echo.AnimatedArrowYellow} `,
             fields: [
-                `**Accede al canal de apelaciones:** En este servidor, dirígete a <#${Config.DiscordBot.EchosOfTalent.channels.CreateApeal}>`,
+                `**Accede al canal de apelaciones:** En este servidor, dirígete a <#${Config.DiscordBot.EchoesOfTalent.channels.CreateApeal}>`,
                 "Da clic en el botón de **Crear Apelación**.",
                 "Responde de manera honesta el formulario que se te proporcionará.",
                 "Confirma que se haya creado tu apelación llendo a la categoria que se creo con tu ID de usuario, donde habrá un canal de texto y otro de voz.",
@@ -824,55 +824,55 @@ export const ColorData = [
     {
         label: "Rojo",
         emoji: "🟥",
-        id: Config.DiscordBot.EchosOfTalent.roles.Rojo,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Rojo,
         buttonId: ButtonsId.Autorol_Rojo
     },
     {
         label: "Azul",
         emoji: "🟦",
-        id: Config.DiscordBot.EchosOfTalent.roles.Azul,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Azul,
         buttonId: ButtonsId.Autorol_Azul
     },
     {
         label: "Verde",
         emoji: "🟩",
-        id: Config.DiscordBot.EchosOfTalent.roles.Verde,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Verde,
         buttonId: ButtonsId.Autorol_Verde
     },
     {
         label: "Amarillo",
         emoji: "🟨",
-        id: Config.DiscordBot.EchosOfTalent.roles.Amarillo,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Amarillo,
         buttonId: ButtonsId.Autorol_Amarillo
     },
     {
         label: "Naranja",
         emoji: "🟧",
-        id: Config.DiscordBot.EchosOfTalent.roles.Naranja,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Naranja,
         buttonId: ButtonsId.Autorol_Naranja
     },
     {
         label: "Rosa",
         emoji: "🌸",
-        id: Config.DiscordBot.EchosOfTalent.roles.Rosa,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Rosa,
         buttonId: ButtonsId.Autorol_Rosa
     },
     {
         label: "Morado",
         emoji: "🟪",
-        id: Config.DiscordBot.EchosOfTalent.roles.Morado,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Morado,
         buttonId: ButtonsId.Autorol_Morado
     },
     {
         label: "Blanco",
         emoji: "⬜",
-        id: Config.DiscordBot.EchosOfTalent.roles.Blanco,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Blanco,
         buttonId: ButtonsId.Autorol_Blanco
     },
     {
         label: "Negro",
         emoji: "⬛",
-        id: Config.DiscordBot.EchosOfTalent.roles.Negro,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Negro,
         buttonId: ButtonsId.Autorol_Negro
     }
 ];
@@ -883,7 +883,7 @@ export const MusicalSpecialistData = [
         label: "Oyente",
         description: "Rol para aquellos que disfrutan escuchar música.",
         emoji: "🎧",
-        id: Config.DiscordBot.EchosOfTalent.roles.Oyente,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Oyente,
         buttonId: ButtonsId.Autorol_Oyente
     },
 
@@ -891,49 +891,49 @@ export const MusicalSpecialistData = [
         label: "Cuerdas",
         description: "Rol para músicos que tocan instrumentos de cuerda.",
         emoji: "🎻",
-        id: Config.DiscordBot.EchosOfTalent.roles.Cuerdas,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Cuerdas,
         buttonId: ButtonsId.Autorol_Cuerdas
     },
     {
         label: "Vientos",
         description: "Rol para músicos que tocan instrumentos de viento.",
         emoji: "🎷",
-        id: Config.DiscordBot.EchosOfTalent.roles.Vientos,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Vientos,
         buttonId: ButtonsId.Autorol_Vientos
     },
     {
         label: "Baterista",
         description: "Rol para bateristas.",
         emoji: "🥁",
-        id: Config.DiscordBot.EchosOfTalent.roles.Baterista,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Baterista,
         buttonId: ButtonsId.Autorol_Baterista
     },
     {
         label: "Pianista/Tecladista",
         description: "Rol para pianistas y tecladistas.",
         emoji: "🎹",
-        id: Config.DiscordBot.EchosOfTalent.roles.PianistaTecladista,
+        id: Config.DiscordBot.EchoesOfTalent.roles.PianistaTecladista,
         buttonId: ButtonsId.Autorol_PianistaTecladista
     },
     {
         label: "Compositor",
         description: "Rol para compositores.",
         emoji: "🎼",
-        id: Config.DiscordBot.EchosOfTalent.roles.Compositor,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Compositor,
         buttonId: ButtonsId.Autorol_Compositor
     },
     {
         label: "Percusionista",
         description: "Rol para percusionistas.",
         emoji: "🥁",
-        id: Config.DiscordBot.EchosOfTalent.roles.Percusionista,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Percusionista,
         buttonId: ButtonsId.Autorol_Percusionista
     },
     {
         label: "Vocalista",
         description: "Rol para vocalistas.",
         emoji: "🎤",
-        id: Config.DiscordBot.EchosOfTalent.roles.Vocalista,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Vocalista,
         buttonId: ButtonsId.Autorol_Vocalista
     }
 ];
@@ -941,24 +941,10 @@ export const MusicalSpecialistData = [
 // Info para los AutoRoles de Hobbies
 export const HobbiesData = [
     {
-        label: "Artista Gráfico",
-        description: "Rol para aquellos que crean arte gráfico.",
-        emoji: "🎨",
-        id: Config.DiscordBot.EchosOfTalent.roles.ArtistaGrafico,
-        buttonId: ButtonsId.Autorol_ArtistaGrafico
-    },
-    {
-        label: "Artista Musical",
-        description: "Rol para aquellos que crean música.",
-        emoji: "🎵",
-        id: Config.DiscordBot.EchosOfTalent.roles.ArtistaMusical,
-        buttonId: ButtonsId.Autorol_ArtistaMusical
-    },
-    {
         label: "Músico",
         description: "Rol para músicos en general.",
         emoji: "🎸",
-        id: Config.DiscordBot.EchosOfTalent.roles.Musico,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Musico,
         buttonId: ButtonsId.Autorol_Musico
     },
 
@@ -966,42 +952,49 @@ export const HobbiesData = [
         label: "Teatro",
         description: "Rol para aquellos que participan en teatro.",
         emoji: "🎭",
-        id: Config.DiscordBot.EchosOfTalent.roles.Teatro,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Teatro,
         buttonId: ButtonsId.Autorol_Teatro
     },
     {
         label: "DJ",
         description: "Rol para DJs.",
         emoji: "🎧",
-        id: Config.DiscordBot.EchosOfTalent.roles.DJ,
+        id: Config.DiscordBot.EchoesOfTalent.roles.DJ,
         buttonId: ButtonsId.Autorol_DJ
+    },
+    {
+        label: "Freestyler",
+        description: "Rol para aquellos que disfrutan del Freestyle.",
+        emoji: "🎤",
+        id: Config.DiscordBot.EchoesOfTalent.roles.Freestyler,
+        buttonId: ButtonsId.Autorol_Freestyler
     },
     {
         label: "Gaming",
         description: "Rol para aquellos que disfrutan de los videojuegos.",
         emoji: "🎮",
-        id: Config.DiscordBot.EchosOfTalent.roles.Gaming,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Gaming,
         buttonId: ButtonsId.Autorol_Gaming
     },
     {
         label: "Deporte",
         description: "Rol para aquellos que disfrutan de los deportes.",
         emoji: "⚽",
-        id: Config.DiscordBot.EchosOfTalent.roles.Deporte,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Deporte,
         buttonId: ButtonsId.Autorol_Deporte
     },
     {
         label: "Escritor",
         description: "Rol para escritores.",
         emoji: "✍️",
-        id: Config.DiscordBot.EchosOfTalent.roles.Escritor,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Escritor,
         buttonId: ButtonsId.Autorol_Escritor
     },
     {
         label: "Poesía",
         description: "Rol para poetas.",
         emoji: "🖋️",
-        id: Config.DiscordBot.EchosOfTalent.roles.Poesia,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Poesia,
         buttonId: ButtonsId.Autorol_Poesia
     }
 ];
@@ -1012,112 +1005,105 @@ export const MusicGenreData = [
         label: "Blues",
         description: "Rol para aquellos que disfrutan del Blues.",
         emoji: "🎷",
-        id: Config.DiscordBot.EchosOfTalent.roles.Blues,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Blues,
         buttonId: ButtonsId.Autorol_Blues
     },
     {
         label: "Indie/Alternativo",
         description: "Rol para aquellos que disfrutan del Indie y Alternativo.",
         emoji: "🎸",
-        id: Config.DiscordBot.EchosOfTalent.roles.IndieAlternativo,
+        id: Config.DiscordBot.EchoesOfTalent.roles.IndieAlternativo,
         buttonId: ButtonsId.Autorol_IndieAlternativo
     },
     {
         label: "Folk/Acústico",
         description: "Rol para aquellos que disfrutan del Folk y Acústico.",
         emoji: "🎻",
-        id: Config.DiscordBot.EchosOfTalent.roles.FolkAcustico,
+        id: Config.DiscordBot.EchoesOfTalent.roles.FolkAcustico,
         buttonId: ButtonsId.Autorol_FolkAcustico
     },
     {
         label: "Bossa Nova",
         description: "Rol para aquellos que disfrutan de la Bossa Nova.",
         emoji: "🎶",
-        id: Config.DiscordBot.EchosOfTalent.roles.BossaNova,
+        id: Config.DiscordBot.EchoesOfTalent.roles.BossaNova,
         buttonId: ButtonsId.Autorol_BossaNova
     },
     {
         label: "Rock",
         description: "Rol para aquellos que disfrutan del Rock.",
         emoji: "🎸",
-        id: Config.DiscordBot.EchosOfTalent.roles.Rock,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Rock,
         buttonId: ButtonsId.Autorol_Rock
     },
     {
         label: "Experimental/Progresivo",
         description: "Rol para aquellos que disfrutan del Experimental y Progresivo.",
         emoji: "🎹",
-        id: Config.DiscordBot.EchosOfTalent.roles.ExperimentalProgresivo,
+        id: Config.DiscordBot.EchoesOfTalent.roles.ExperimentalProgresivo,
         buttonId: ButtonsId.Autorol_ExperimentalProgresivo
     },
     {
         label: "Pop",
         description: "Rol para aquellos que disfrutan del Pop.",
         emoji: "🎤",
-        id: Config.DiscordBot.EchosOfTalent.roles.Pop,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Pop,
         buttonId: ButtonsId.Autorol_Pop
     },
     {
         label: "Electrónica/EDM",
         description: "Rol para aquellos que disfrutan de la Electrónica y EDM.",
         emoji: "🎧",
-        id: Config.DiscordBot.EchosOfTalent.roles.ElectronicaEDM,
+        id: Config.DiscordBot.EchoesOfTalent.roles.ElectronicaEDM,
         buttonId: ButtonsId.Autorol_ElectronicaEDM
     },
     {
         label: "Salsa",
         description: "Rol para aquellos que disfrutan de la Salsa.",
         emoji: "🕺",
-        id: Config.DiscordBot.EchosOfTalent.roles.Salsa,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Salsa,
         buttonId: ButtonsId.Autorol_Salsa
     },
     {
         label: "Jazz",
         description: "Rol para aquellos que disfrutan del Jazz.",
         emoji: "🎷",
-        id: Config.DiscordBot.EchosOfTalent.roles.Jazz,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Jazz,
         buttonId: ButtonsId.Autorol_Jazz
-    },
-    {
-        label: "Freestyler",
-        description: "Rol para aquellos que disfrutan del Freestyle.",
-        emoji: "🎤",
-        id: Config.DiscordBot.EchosOfTalent.roles.Freestyler,
-        buttonId: ButtonsId.Autorol_Freestyler
     },
     {
         label: "Clásica",
         description: "Rol para aquellos que disfrutan de la música Clásica.",
         emoji: "🎻",
-        id: Config.DiscordBot.EchosOfTalent.roles.Clasica,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Clasica,
         buttonId: ButtonsId.Autorol_Clasica
     },
     {
         label: "Metal",
         description: "Rol para aquellos que disfrutan del Metal.",
         emoji: "🎸",
-        id: Config.DiscordBot.EchosOfTalent.roles.Metal,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Metal,
         buttonId: ButtonsId.Autorol_Metal
     },
     {
         label: "Urbano",
         description: "Rol para aquellos que disfrutan de la música Urbana.",
         emoji: "🎤",
-        id: Config.DiscordBot.EchosOfTalent.roles.Urbano,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Urbano,
         buttonId: ButtonsId.Autorol_Urbano
     },
     {
         label: "Cumbia",
         description: "Rol para aquellos que disfrutan de la Cumbia.",
         emoji: "🕺",
-        id: Config.DiscordBot.EchosOfTalent.roles.Cumbia,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Cumbia,
         buttonId: ButtonsId.Autorol_Cumbia
     },
     {
         label: "Latino",
         description: "Rol para aquellos que disfrutan de la música Latina.",
         emoji: "🎶",
-        id: Config.DiscordBot.EchosOfTalent.roles.Latino,
+        id: Config.DiscordBot.EchoesOfTalent.roles.Latino,
         buttonId: ButtonsId.Autorol_Latino
     }
 ];
@@ -1192,4 +1178,46 @@ export const EchoesTeam = {
 // Info de Suffijos de los Staff
 export const StaffTeamSuffixes: Record<string, string> = {
     "437308398845952001": Emojis.KomiShouko.KomiFlushed
+};
+
+export const TextLevels = {
+    100: Config.DiscordBot.EchoesOfTalent.roles.LevelText100,
+    90: Config.DiscordBot.EchoesOfTalent.roles.LevelText90,
+    80: Config.DiscordBot.EchoesOfTalent.roles.LevelText80,
+    70: Config.DiscordBot.EchoesOfTalent.roles.LevelText70,
+    60: Config.DiscordBot.EchoesOfTalent.roles.LevelText60,
+    50: Config.DiscordBot.EchoesOfTalent.roles.LevelText50,
+    40: Config.DiscordBot.EchoesOfTalent.roles.LevelText40,
+    30: Config.DiscordBot.EchoesOfTalent.roles.LevelText30,
+    20: Config.DiscordBot.EchoesOfTalent.roles.LevelText20,
+    10: Config.DiscordBot.EchoesOfTalent.roles.LevelText10,
+    0: Config.DiscordBot.EchoesOfTalent.roles.LevelText0
+};
+
+export const VoiceLevels = {
+    100: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice100,
+    90: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice90,
+    80: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice80,
+    70: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice70,
+    60: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice60,
+    50: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice50,
+    40: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice40,
+    30: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice30,
+    20: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice20,
+    10: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice10,
+    0: Config.DiscordBot.EchoesOfTalent.roles.LevelVoice0
+};
+
+export const VoiceRankLevels = {
+    100: Config.DiscordBot.EchoesOfTalent.roles.LeyendaDeEchoes,
+    90: Config.DiscordBot.EchoesOfTalent.roles.LuzDeEchoes,
+    80: Config.DiscordBot.EchoesOfTalent.roles.EstrellaDeEchoes,
+    70: Config.DiscordBot.EchoesOfTalent.roles.TalentoAbsoluto,
+    60: Config.DiscordBot.EchoesOfTalent.roles.TalentoBrillante,
+    50: Config.DiscordBot.EchoesOfTalent.roles.FuturaEstrella,
+    40: Config.DiscordBot.EchoesOfTalent.roles.TalentoEnAscenso,
+    30: Config.DiscordBot.EchoesOfTalent.roles.TalentoInicial,
+    20: Config.DiscordBot.EchoesOfTalent.roles.PromesaEmergente,
+    10: Config.DiscordBot.EchoesOfTalent.roles.NotaPerdida,
+    0: Config.DiscordBot.EchoesOfTalent.roles.Novato
 };

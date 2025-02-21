@@ -5,7 +5,7 @@ export enum ButtonsId {
     JoinQueue = "joinQueue",
     ExitQueue = "exitQueue",
     FinishQueue = "finishQueue",
-    RestartQueue = "restartQueue",
+    FocusQueue = "focusQueue",
     SkipQueue = "skipQueue",
 
     // Karaoke Duel
@@ -86,7 +86,9 @@ export enum ButtonsId {
     Autorol_Latino = "autorolLatino",
 
     // Apeals
-    CreateApeal = "createApeal"
+    CreateApeal = "createApeal",
+    PardonApeal = "pardonApeal",
+    DefinitiveBan = "definitiveBan"
 }
 
 export type ButtonsType = ButtonsId;

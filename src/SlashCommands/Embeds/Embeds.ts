@@ -262,13 +262,13 @@ export default new SlashCommandStructure({
         const memberPermissions = interaction.member?.permissions;
         const requiredPermissions = [PermissionFlagsBits.Administrator];
         const requiredRoles = [
-            Config.DiscordBot.EchosOfTalent.roles.PoderesMisticos,
-            Config.DiscordBot.EchosOfTalent.roles.Founder,
-            Config.DiscordBot.EchosOfTalent.roles.Director,
-            Config.DiscordBot.EchosOfTalent.roles.Programador,
-            Config.DiscordBot.EchosOfTalent.roles.Admin,
-            Config.DiscordBot.EchosOfTalent.roles.Supervisor,
-            Config.DiscordBot.EchosOfTalent.roles.Moderator
+            Config.DiscordBot.EchoesOfTalent.roles.PoderesMisticos,
+            Config.DiscordBot.EchoesOfTalent.roles.Founder,
+            Config.DiscordBot.EchoesOfTalent.roles.Director,
+            Config.DiscordBot.EchoesOfTalent.roles.Programador,
+            Config.DiscordBot.EchoesOfTalent.roles.Admin,
+            Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
+            Config.DiscordBot.EchoesOfTalent.roles.Moderator
         ];
 
         const permissions =
@@ -299,7 +299,7 @@ export default new SlashCommandStructure({
         const Int = interaction.options as CommandInteractionOptionResolver;
         const subCommand = Int.getSubcommand();
         const IntMap = {
-            "send-embed": async () => {
+            "send-embed-1": async () => {
                 const embed = Int.getString("embed");
                 const CommandToExecute = {
                     autoroles: async () =>

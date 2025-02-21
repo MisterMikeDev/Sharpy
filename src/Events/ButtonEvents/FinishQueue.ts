@@ -12,27 +12,17 @@ export const buttonEvent: ButtonEvent = {
         const currentQueue = Sharpy.queue.get(interactionChannel.id);
 
         if (!currentQueue) {
-            return await interaction
-                .followUp({
-                    content: `${Emojis.Util.No} | No hay ninguna lista en este canal.`
-                })
-                .then(async (int) => {
-                    setTimeout(async () => {
-                        await int.delete().catch(() => {});
-                    }, 5000);
-                });
+            return await interaction.followUp({
+                content: `${Emojis.Util.No} | No hay ninguna lista en este canal.`,
+                ephemeral: true
+            });
         }
 
         if (currentQueue.list[0].id !== interactionUser.id) {
-            return await interaction
-                .followUp({
-                    content: `${Emojis.Util.No} | No puedes pasar turno si no estás en el turno actual.`
-                })
-                .then(async (int) => {
-                    setTimeout(async () => {
-                        await int.delete().catch(() => {});
-                    }, 5000);
-                });
+            return await interaction.followUp({
+                content: `${Emojis.Util.No} | No puedes pasar turno si no estás en el turno actual.`,
+                ephemeral: true
+            });
         }
 
         const modifyQueue = {
@@ -43,15 +33,5 @@ export const buttonEvent: ButtonEvent = {
         Sharpy.ModifyQueue(interactionChannel.id, modifyQueue.list);
 
         Sharpy.UpdateQueueInCurrentChannel(interactionChannel.id);
-
-        await interaction
-            .followUp({
-                content: `${Emojis.Util.Yes} | Pasando turno al siguiente.`
-            })
-            .then(async (int) => {
-                setTimeout(async () => {
-                    await int.delete().catch(() => {});
-                }, 5000);
-            });
     }
 };

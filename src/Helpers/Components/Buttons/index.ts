@@ -2,7 +2,8 @@ export {
     ExitQueueButton,
     FinishQueueButton,
     JoinQueueButton,
-    RestartQueueButton,
+    FocusQueueButton,
+    UnfocusQueueButton,
     SkipQueueButton
 } from "./Queue";
 export { VerifyCloseTicketButton } from "./VerifyCloseTicket";

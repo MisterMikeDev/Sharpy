@@ -9,7 +9,7 @@ export const modalEvent: ModalEvent = {
     id: ModalsId.CreateTicket,
     run: async (Sharpy, interaction) => {
         await interaction.deferUpdate();
-        const EOT = Config.DiscordBot.EchosOfTalent;
+        const EOT = Config.DiscordBot.EchoesOfTalent;
         const parentId = EOT.categories.tickets;
         const inputField = interaction.fields.fields.get(ModalsId.CreateTicketInput);
         const reason = inputField ? inputField.value : "No se proporcionó un motivo.";

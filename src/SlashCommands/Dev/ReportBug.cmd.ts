@@ -13,7 +13,7 @@ export const ReportBugCommand = async ({
     bug: string;
 }) => {
     const channel = (await Sharpy.channels.fetch(
-        Config.DiscordBot.EchosOfTalent.channels.ReportBug
+        Config.DiscordBot.EchoesOfTalent.channels.ReportBug
     )) as TextChannel;
 
     if (!channel) return;

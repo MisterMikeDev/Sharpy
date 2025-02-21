@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite" // "postgresql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -27,20 +27,20 @@ model Tickets {
   channelId      String             @unique
   affaire        String
   staffIdClaimed String?
-  resolution     TicketsResolution? @relation
   createdAt      DateTime           @default(now())
   updatedAt      DateTime           @updatedAt
+  resolution     TicketsResolution?
 }
 
 model TicketsResolution {
   id        String   @id @default(cuid())
-  ticket    Tickets  @relation(fields: [ticketId], references: [id])
   ticketId  String   @unique
   staffId   String?
   reason    String
   closedAt  DateTime @default(now())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  ticket    Tickets  @relation(fields: [ticketId], references: [id])
 }
 
 model Suggestions {
@@ -50,19 +50,17 @@ model Suggestions {
   suggestion String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-
-  votes Votes[]
+  votes      Votes[]
 }
 
 model Votes {
-  id           String   @id @default(cuid())
+  id           String      @id @default(cuid())
   suggestionId String
   userId       String
-  vote         Int      @default(0)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  suggestion Suggestions @relation(fields: [suggestionId], references: [id], onDelete: Cascade)
+  vote         Int         @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  suggestion   Suggestions @relation(fields: [suggestionId], references: [id], onDelete: Cascade)
 }
 
 model Replic {
@@ -73,23 +71,23 @@ model Replic {
   participant2 String?
   participant3 String?
   participant4 String?
-  votes        ReplicVotes[]
   replicStatus Int           @default(0)
-  currentTurn  Int           @default(1) // 1, 2, 3, 4
+  currentTurn  Int           @default(1)
   winnerId     String?
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
+  votes        ReplicVotes[]
 }
 
 model ReplicVotes {
   id        String   @id @default(cuid())
-  replic    Replic   @relation(fields: [replicId], references: [id], onDelete: Cascade)
   replicId  String
   userId    String
   voteFor   Int
   weight    Int      @default(1)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  replic    Replic   @relation(fields: [replicId], references: [id], onDelete: Cascade)
 }
 
 model Blacklist {
@@ -112,20 +110,45 @@ model PreApeals {
 model Apeals {
   id                  String   @id @default(cuid())
   userId              String   @unique
+  situation           String
+  commitment          String
   categoryId          String
   textApealChannelId  String
   voiceApealChannelId String
-  status              String   @default("pending") // pending, pardon, rejected
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 }
 
 model Pardons {
   id        String   @id @default(cuid())
-  userId    String   @unique
-  count     Int      @default(0)
+  userId    String
+  staffId   String
+  reason    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-// hacer los embeds de apeal, apeal-info y create-apeal
+model Warns {
+  id        String   @id @default(cuid())
+  userId    String
+  staffId   String
+  reason    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SingRank {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  points    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Birthdays {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  date      DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -10,38 +10,11 @@ export const event: Event = {
     name: "messageCreate",
     run: async (Sharpy, message: Message) => {
         if (
-            message.channel.id !== Config.DiscordBot.EchosOfTalent.channels.Sugerencias ||
+            message.channel.id !==
+                Config.DiscordBot.EchoesOfTalent.channels.Sugerencias ||
             message.author.bot
         )
             return;
-
-        // const replys = [
-        //     "Me vale verga tu sugerencia",
-        //     "Tu sugerencia es una mierda",
-        //     "Y si mejor te callas",
-        //     "Mejor vamos cerrando el ortito",
-        //     "No me interesa tu pendejada",
-        //     "Para eso mejor no digas nada",
-        //     "De que raza es esa perra mamada que acabas de decir",
-        //     "Mejor vete a la verga",
-        //     "No me interesa tu opinión",
-        //     "No me importa tu sugerencia",
-        //     "Mejor vete a la chingada",
-        //     "Come mierda",
-        //     "Vete a la verga, que hueva",
-        //     "Pero que pendejada acabas de decir",
-        //     "Deja de decir pendejadas",
-        //     "Llega el pendejo a decir pendejadas",
-        //     "No mames...",
-        //     "Esa mafufada que acabas de decir",
-        //     "Deja de cagar el palo",
-        //     "Camara wey, no chinges",
-        //     "Tu sugerencia es una reverenda pendejada"
-        // ];
-
-        // const random = Math.floor(Math.random() * replys.length);
-
-        // message.reply(replys[random]);
 
         const userBlacklist = await BlacklistDb.GetUserById(Sharpy, message.author.id);
 

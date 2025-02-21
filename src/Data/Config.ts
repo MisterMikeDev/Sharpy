@@ -51,7 +51,7 @@ export const Config = {
             "MessageContent",
             "GuildScheduledEvents"
         ],
-        EchosOfTalent: {
+        EchoesOfTalent: {
             id: "1307747744768856110",
             apealServerId: "1335116102342279219",
             prefixes: {
@@ -75,8 +75,11 @@ export const Config = {
                 MaterialMusical: "1314449635829485628",
                 MaterialGrafico: "1327375896071376976",
                 ReportBug: "1335090260132102235",
+                ReportStaff: "1313699056933146676",
                 InfoApeals: "1335826364045066251",
+                Warns: "1340541472637976670",
                 CreateApeal: "1335826249645424697",
+                Birthdays: "1341511017116471346",
 
                 // Canales de texto que pueden ganar XP
                 General: "1307844573560701119",
@@ -132,6 +135,7 @@ export const Config = {
                 /* Roles de Boost */
                 AltaSociedad: "1316791399156285572",
                 VIP: "1307762166127923263",
+                Veterano: "1342249210208190464",
                 /* Roles base */
                 Miembro: "1307817127364919326",
                 Bots: "1308437376351076422",
@@ -203,9 +207,48 @@ export const Config = {
                 Jurado: "1313122084334862386",
                 ArtistaEmergente: "1314375640748785706",
                 CreadorDeEventos: "1312909624332124210",
-                Partner: "1330729337367957655",
+                Partner: "1338019551161356288",
                 /* Driver */
-                AquelQueConduce: "1330239808467107900"
+                AquelQueConduce: "1330239808467107900",
+                /* Roles de nivel */
+                LevelVoice100: "1340920715507011596",
+                LevelVoice90: "1340920710192828500",
+                LevelVoice80: "1340920707877568512",
+                LevelVoice70: "1340920704668930149",
+                LevelVoice60: "1340920701045182564",
+                LevelVoice50: "1340920698415349854",
+                LevelVoice40: "1340920694875095040",
+                LevelVoice30: "1340920691557531649",
+                LevelVoice20: "1340920688827174944",
+                LevelVoice10: "1340920685844893718",
+                LevelVoice0: "1340920682783047712",
+                LevelText100: "1340920679838519329",
+                LevelText90: "1340920676936056884",
+                LevelText80: "1340920672578310186",
+                LevelText70: "1340920667591147574",
+                LevelText60: "1340920664986746920",
+                LevelText50: "1340920661987561472",
+                LevelText40: "1340920658930171984",
+                LevelText30: "1340920656040165476",
+                LevelText20: "1340920653435637780",
+                LevelText10: "1340920645999001620",
+                LevelText0: "1340920643062857920",
+                LeyendaDeEchoes: "1334382983716671489",
+                LuzDeEchoes: "1334383138582958081",
+                EstrellaDeEchoes: "1334382997394292766",
+                TalentoAbsoluto: "1334383141854646335",
+                TalentoBrillante: "1334383120652304404",
+                FuturaEstrella: "1334382988758224937",
+                TalentoEnAscenso: "1334383128881659995",
+                TalentoInicial: "1334383150620606526",
+                PromesaEmergente: "1334383144996175902",
+                NotaPerdida: "1334383166223290418",
+                Novato: "1334383168966627419",
+
+                /* Separadores */
+                AboutSeparador: "1340907432867664015",
+                LevelsSeparador: "1340907434285203496",
+                ExtraSeparador: "1340909879354724374"
             },
             categories: {
                 dev_tickets: "1319425232813035600",

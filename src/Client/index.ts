@@ -74,6 +74,7 @@ export class Sharpy extends Client {
         const newQueue: Queue = {
             id: id,
             messageID: messageID,
+            focus: false,
             list: list,
             skipVoteList: []
         };
@@ -149,7 +150,7 @@ export class Sharpy extends Client {
     public async UpdateQueueInCurrentChannel(id: string) {
         const currentQueue = this.queue.get(id) as Queue;
 
-        const { content, embed } = QueueEmbed(this, currentQueue);
+        const { content, embed, components } = QueueEmbed(this, currentQueue);
 
         const channel = (await this.channels.fetch(id)) as TextChannel;
         const messages = await channel!.messages.fetch();
@@ -163,8 +164,22 @@ export class Sharpy extends Client {
 
         await queueMessage.edit({
             content,
-            embeds: [embed]
+            embeds: [embed],
+            components
         });
+    }
+
+    public async SetFocusQueue(id: string, focus: boolean) {
+        const currentQueue = this.queue.get(id) as Queue;
+
+        const modifyQueue = {
+            ...currentQueue,
+            focus: focus
+        } as Queue;
+
+        this.queue.set(id, modifyQueue);
+
+        return modifyQueue;
     }
 
     /* Metodos para el duelo */
@@ -359,7 +374,7 @@ export class Sharpy extends Client {
         }
 
         const channel = (await this.channels.fetch(
-            Config.DiscordBot.EchosOfTalent.channels.Sugerencias
+            Config.DiscordBot.EchoesOfTalent.channels.Sugerencias
         )) as TextChannel;
         const messages = await channel!.messages.fetch();
         const suggestionMessage = messages.find(
@@ -442,7 +457,7 @@ export class Sharpy extends Client {
 
     public async AddVoiceXpToUser(userId: string, xp: number) {
         const member = await (
-            await this.guilds.fetch(Config.DiscordBot.EchosOfTalent.id)
+            await this.guilds.fetch(Config.DiscordBot.EchoesOfTalent.id)
         ).members.fetch(userId);
         const xpUser = await LevelSystemDb.GetUserByUserId(this, userId);
 

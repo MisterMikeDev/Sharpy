@@ -6,12 +6,10 @@ import { WelcomeEmbed } from "../../Helpers";
 export const event: Event = {
     name: "guildMemberAdd",
     run: async (Sharpy, member: GuildMember) => {
-        if (member.guild.id !== Config.DiscordBot.EchosOfTalent.id) {
-            const channel = Sharpy.guilds.cache
-                .get(Config.DiscordBot.EchosOfTalent.id)
-                ?.channels.cache.get(Config.DiscordBot.EchosOfTalent.channels.General);
-
-            if (!channel || !(channel instanceof TextChannel)) return;
+        if (member.guild.id === Config.DiscordBot.EchoesOfTalent.id) {
+            const channel = (await Sharpy.channels.fetch(
+                Config.DiscordBot.EchoesOfTalent.channels.General
+            )) as TextChannel;
 
             try {
                 const user = member.user;
@@ -23,21 +21,43 @@ export const event: Event = {
                 });
 
                 await member.roles
-                    .add(Config.DiscordBot.EchosOfTalent.roles.Miembro)
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.Miembro)
+                    .catch(() => {});
+                await member.roles
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.AboutSeparador)
+                    .catch(() => {});
+                await member.roles
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.LevelsSeparador)
+                    .catch(() => {});
+                await member.roles
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.ExtraSeparador)
+                    .catch(() => {});
+                await member.roles
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.LevelText0)
+                    .catch(() => {});
+                await member.roles
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.LevelVoice0)
+                    .catch(() => {});
+                await member.roles
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.Novato)
                     .catch(() => {});
             } catch (error) {
                 console.error(`No se pudo enviar el mensaje de bienvenida: ${error}`);
             }
+
+            return;
         }
 
-        if (member.guild.id !== Config.DiscordBot.EchosOfTalent.apealServerId) {
+        if (member.guild.id === Config.DiscordBot.EchoesOfTalent.apealServerId) {
             try {
                 await member.roles
-                    .add(Config.DiscordBot.EchosOfTalent.roles.BaneadoApeal)
+                    .add(Config.DiscordBot.EchoesOfTalent.roles.BaneadoApeal)
                     .catch(() => {});
             } catch (error) {
                 console.error(`No se pudo asignar el rol de Baneado: ${error}`);
             }
+
+            return;
         }
     }
 };

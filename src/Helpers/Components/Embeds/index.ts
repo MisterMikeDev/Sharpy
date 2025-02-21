@@ -42,3 +42,4 @@ export { SharpyInfo } from "./SharpyInfo";
 export { InfoKaraoke } from "./InfoKaraoke";
 export { InfoApeal, CreateApealEmbed } from "./InfoApeal";
 export { ApealBanEmbed } from "./ApealBanEmbed";
+export { ApealCreatedEmbed } from "./ApealCreatedEmbed";

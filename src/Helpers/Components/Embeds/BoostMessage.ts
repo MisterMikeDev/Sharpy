@@ -7,7 +7,7 @@ export const BoostMessageEmbed = (Sharpy: Sharpy, user: User) => {
     const content = `¡Muchas gracias <@${user.id}> por tu boost!`;
     const embed = new EmbedBuilder()
         .setDescription(
-            `# ${Emojis.Echo.Impulso} ¡Gracias por tu boost!\n\nAgredecemos tu apoyo a la comunidad, con tu boost nos ayudas a crecer y a mejorar la calidad de los servicios que ofrecemos.\n> *Recuerda que tienes acceso a los beneficios de boost en el servidor, puedes verlos en <#${Config.DiscordBot.EchosOfTalent.channels.InfoBooster}>.*`
+            `# ${Emojis.Echo.Impulso} ¡Gracias por tu boost!\n\nAgredecemos tu apoyo a la comunidad, con tu boost nos ayudas a crecer y a mejorar la calidad de los servicios que ofrecemos.\n> *Recuerda que tienes acceso a los beneficios de boost en el servidor, puedes verlos en <#${Config.DiscordBot.EchoesOfTalent.channels.InfoBooster}>.*`
         )
         .setColor("#fd6cf7")
         .setFooter({
