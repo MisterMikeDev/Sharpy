@@ -4,6 +4,10 @@ import {
 } from "discord.js";
 import { SlashCommandStructure } from "../../Interfaces";
 import { Emojis } from "../../Data/Emojis";
+import { RegisterCommand } from "./Register.cmd";
+import { ListCommand } from "./List.cmd";
+import { PreviousCommand } from "./Previous.cmd";
+import { NextCommand } from "./Next.cmd";
 const { Subcommand } = ApplicationCommandOptionType;
 
 export default new SlashCommandStructure({
@@ -66,19 +70,21 @@ export default new SlashCommandStructure({
             type: Subcommand
         }
     ],
-    run: async ({ interaction }) => {
+    run: async ({ Sharpy, interaction }) => {
         if (!interaction.guildId)
-            return await interaction.followUp(
-                `${Emojis.Util.No} | No se ha encontrado el servidor.`
-            );
+            return await interaction.reply({
+                content: `${Emojis.Util.No} | No se ha encontrado el servidor.`,
+                ephemeral: true
+            });
 
         const Int = interaction.options as CommandInteractionOptionResolver;
         const subCommand = Int.getSubcommand();
         const IntMap = {
-            register: async () => await interaction.followUp("register"),
-            list: async () => await interaction.followUp("list"),
-            previous: async () => await interaction.followUp("previous"),
-            next: async () => await interaction.followUp("next")
+            register: async () =>
+                await RegisterCommand({ Sharpy, interaction, options: Int }),
+            list: async () => await ListCommand({ Sharpy, interaction }),
+            previous: async () => PreviousCommand({ Sharpy, interaction }),
+            next: async () => await NextCommand({ Sharpy, interaction })
         };
 
         const CommandToExecute = IntMap[subCommand as keyof typeof IntMap];
