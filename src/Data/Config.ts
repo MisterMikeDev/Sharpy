@@ -80,6 +80,7 @@ export const Config = {
                 Warns: "1340541472637976670",
                 CreateApeal: "1335826249645424697",
                 Birthdays: "1341511017116471346",
+                PresentateStaff: "1341510732252053627",
 
                 // Canales de texto que pueden ganar XP
                 General: "1307844573560701119",

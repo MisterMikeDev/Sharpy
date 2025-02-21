@@ -1,9 +1,19 @@
-import { Message, PermissionFlagsBits, PermissionsBitField } from "discord.js";
+import {
+    Message,
+    PermissionFlagsBits,
+    PermissionsBitField,
+    TextChannel
+} from "discord.js";
 import { Event } from "../../Interfaces";
 import { BannedWords } from "../../Data/Data";
 import { Config } from "../../Data/Config";
-import { CalcXpForMessage, GetCountOfBoostThisServer } from "../../Helpers";
+import {
+    CalcXpForMessage,
+    GetCountOfBoostThisServer,
+    StaffPresentation
+} from "../../Helpers";
 import { Db } from "../../Helpers/Db/LevelSystem";
+import { Emojis } from "../../Data/Emojis";
 
 export const event: Event = {
     name: "messageCreate",
@@ -82,6 +92,33 @@ export const event: Event = {
                     type: "text",
                     level
                 });
+        }
+
+        // Presentate Staff
+        if (
+            message.channel.id ===
+            Config.DiscordBot.EchoesOfTalent.channels.PresentateStaff
+        ) {
+            if (message.author.bot) return;
+
+            const presentateStaffChannel = (await Sharpy.channels.fetch(
+                Config.DiscordBot.EchoesOfTalent.channels.PresentateStaff
+            )) as TextChannel;
+
+            if (!presentateStaffChannel) return;
+
+            const { embed } = await StaffPresentation({ Sharpy, message });
+
+            await message.delete().catch(() => {});
+
+            presentateStaffChannel
+                .send({ embeds: [embed] })
+                .then((m) => {
+                    m.react(`${Emojis.Echo.GatoHappyMeme}`);
+                    m.react(`${Emojis.Echo.MexicanCat}`);
+                    m.react(`${Emojis.Echo.Smile}`);
+                })
+                .catch(() => {});
         }
     }
 };

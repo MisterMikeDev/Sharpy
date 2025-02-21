@@ -70,6 +70,10 @@ export const RegisterCommand = async ({
     const birthday = new Date(year, monthIndex, day);
 
     try {
+        const birthdayChannel = (await Sharpy.channels.fetch(
+            Config.DiscordBot.EchoesOfTalent.channels.Birthdays
+        )) as TextChannel;
+
         const b = await Db.RegisterBirthday(Sharpy, interaction.user.id, birthday);
 
         if (!b)
@@ -77,7 +81,21 @@ export const RegisterCommand = async ({
                 content: `${Emojis.Util.No} | No se ha podido registrar tu cumpleaños.`
             });
 
-        const userAge = currentYear - year;
+        const today = new Date();
+        let userAge = today.getFullYear() - year;
+
+        if (
+            today.getMonth() < monthIndex ||
+            (today.getMonth() === monthIndex && today.getDate() < day)
+        ) {
+            userAge--;
+        }
+
+        await birthdayChannel
+            .send({
+                content: `> ### <@${interaction.user.id}> ha registrado su cumpleaños para el **${day}/${month}/${year}**.`
+            })
+            .catch(() => {});
 
         await interaction.followUp({
             content: `${Emojis.Util.Yes} | Tu cumpleaños ha sido registrado *(**${day}/${month}/${year}**, y tienes **${userAge}** años)*.`

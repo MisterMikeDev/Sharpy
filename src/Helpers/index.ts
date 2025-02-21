@@ -43,7 +43,8 @@ export {
     InfoApeal,
     ApealBanEmbed,
     CreateApealEmbed,
-    ApealCreatedEmbed
+    ApealCreatedEmbed,
+    StaffPresentation
 } from "./Components/Embeds";
 
 export {
