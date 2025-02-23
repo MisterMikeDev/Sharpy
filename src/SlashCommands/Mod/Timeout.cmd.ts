@@ -38,7 +38,9 @@ export const TimeoutCommand = async ({
         Config.DiscordBot.EchoesOfTalent.roles.Programador,
         Config.DiscordBot.EchoesOfTalent.roles.Admin,
         Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
-        Config.DiscordBot.EchoesOfTalent.roles.Moderator
+        Config.DiscordBot.EchoesOfTalent.roles.Moderator,
+        Config.DiscordBot.EchoesOfTalent.roles.Ayudante,
+        Config.DiscordBot.EchoesOfTalent.roles.Staff
     ];
 
     const permissions =
@@ -60,7 +62,7 @@ export const TimeoutCommand = async ({
         );
     }
 
-    if (!hasRequiredPermissions && !hasRequiredRoles) {
+    if (!(hasRequiredRoles || hasRequiredPermissions)) {
         return await interaction.followUp({
             content: `${Emojis.Util.No} | No tienes los permisos necesarios para ejecutar este comando.`
         });

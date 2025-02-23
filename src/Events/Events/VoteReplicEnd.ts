@@ -13,6 +13,13 @@ export const event: Event = {
             .send("La votación ha finalizado...")
             .then((msg: Message) => setTimeout(() => msg.delete().catch(() => {}), 2500));
 
+        const winnerId = await Db.GetWinnerByVotes(Sharpy, currentReplic.id);
+
+        await Db.UpdateReplicWinner(Sharpy, {
+            replicId: currentReplic.id,
+            winnerId: winnerId
+        });
+
         await Db.UpdateReplicStatus(Sharpy, {
             replicId: currentReplic.id,
             status: 3

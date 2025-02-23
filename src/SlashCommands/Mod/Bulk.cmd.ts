@@ -33,8 +33,7 @@ export const BulkCommand = async ({
         Config.DiscordBot.EchoesOfTalent.roles.Director,
         Config.DiscordBot.EchoesOfTalent.roles.Programador,
         Config.DiscordBot.EchoesOfTalent.roles.Admin,
-        Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
-        Config.DiscordBot.EchoesOfTalent.roles.Moderator
+        Config.DiscordBot.EchoesOfTalent.roles.Supervisor
     ];
 
     const permissions =
@@ -56,7 +55,7 @@ export const BulkCommand = async ({
         );
     }
 
-    if (!hasRequiredPermissions && !hasRequiredRoles) {
+    if (!(hasRequiredRoles || hasRequiredPermissions)) {
         return await interaction.reply({
             content: `${Emojis.Util.No} | No tienes los permisos necesarios para ejecutar este comando.`,
             ephemeral: true

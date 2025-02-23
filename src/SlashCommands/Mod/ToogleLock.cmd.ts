@@ -31,7 +31,9 @@ export const ToggleLockCommand = async ({
         Config.DiscordBot.EchoesOfTalent.roles.Director,
         Config.DiscordBot.EchoesOfTalent.roles.Admin,
         Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
-        Config.DiscordBot.EchoesOfTalent.roles.Moderator
+        Config.DiscordBot.EchoesOfTalent.roles.Moderator,
+        Config.DiscordBot.EchoesOfTalent.roles.Ayudante,
+        Config.DiscordBot.EchoesOfTalent.roles.Staff
     ];
 
     const permissions =
@@ -53,7 +55,7 @@ export const ToggleLockCommand = async ({
         );
     }
 
-    if (!hasRequiredPermissions && !hasRequiredRoles) {
+    if (!(hasRequiredRoles || hasRequiredPermissions)) {
         return await interaction.reply({
             content: `${Emojis.Util.No} | No tienes los permisos necesarios para ejecutar este comando.`,
             ephemeral: true

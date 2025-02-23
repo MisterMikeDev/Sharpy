@@ -55,7 +55,7 @@ export const UntimeoutCommand = async ({
         );
     }
 
-    if (!hasRequiredPermissions && !hasRequiredRoles) {
+    if (!(hasRequiredRoles || hasRequiredPermissions)) {
         return await interaction.followUp({
             content: `${Emojis.Util.No} | No tienes los permisos necesarios para ejecutar este comando.`
         });

@@ -68,7 +68,7 @@ export const modalEvent: ModalEvent = {
             );
         }
 
-        if (!hasRequiredPermissions && !hasRequiredRoles) {
+        if (!(hasRequiredRoles || hasRequiredPermissions)) {
             return await interaction.followUp({
                 content: `${Emojis.Util.No} | No tienes permisos para usar este botón.`,
                 ephemeral: true

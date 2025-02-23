@@ -52,7 +52,9 @@ export const buttonEvent: ButtonEvent = {
             Config.DiscordBot.EchoesOfTalent.roles.Programador,
             Config.DiscordBot.EchoesOfTalent.roles.Admin,
             Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
-            Config.DiscordBot.EchoesOfTalent.roles.Moderator
+            Config.DiscordBot.EchoesOfTalent.roles.Moderator,
+            Config.DiscordBot.EchoesOfTalent.roles.Ayudante,
+            Config.DiscordBot.EchoesOfTalent.roles.Staff
         ];
 
         const hasRequiredPermissions = requiredPermissions.some((permission) =>
@@ -70,7 +72,10 @@ export const buttonEvent: ButtonEvent = {
                 requiredRoles.includes(roleId)
             );
 
-        if (!hasRequiredPermissions || !hasRequiredRoles) {
+        console.log("hasRequiredRoles", hasRequiredRoles);
+        console.log("hasRequiredPermissions", hasRequiredPermissions);
+
+        if (!(hasRequiredRoles || hasRequiredPermissions)) {
             return await interaction.followUp({
                 content: `${Emojis.Util.No} | No tienes permisos para hacer eso.`,
                 ephemeral: true

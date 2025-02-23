@@ -154,7 +154,7 @@ const UpdateReplicWinner = async (
         winnerId
     }: {
         replicId: string;
-        winnerId: string;
+        winnerId: string | null;
     }
 ) => {
     const updatedReplic = await Sharpy.db.replic.update({
@@ -475,6 +475,40 @@ const RunAwayReplic = async (Sharpy: Sharpy, replicId: string, userId: string) =
     return updatedReplic;
 };
 
+const GetWinnerByVotes = async (Sharpy: Sharpy, replicId: string) => {
+    const votes = await Sharpy.db.replicVotes.findMany({
+        where: { replicId }
+    });
+
+    if (!votes.length) return null;
+
+    const votesCount: Record<number, { total: number; oldestVote: Date }> = {};
+
+    for (const vote of votes) {
+        if (!votesCount[vote.voteFor]) {
+            votesCount[vote.voteFor] = { total: 0, oldestVote: vote.createdAt };
+        }
+        votesCount[vote.voteFor].total += vote.weight;
+
+        if (vote.createdAt < votesCount[vote.voteFor].oldestVote) {
+            votesCount[vote.voteFor].oldestVote = vote.createdAt;
+        }
+    }
+
+    const winnerId = Object.keys(votesCount).reduce((a, b) => {
+        const voteA = votesCount[+a];
+        const voteB = votesCount[+b];
+
+        if (voteA.total !== voteB.total) {
+            return voteA.total > voteB.total ? a : b;
+        }
+
+        return voteA.oldestVote < voteB.oldestVote ? a : b;
+    });
+
+    return winnerId;
+};
+
 export const Db = {
     CreateReplic,
     ExitReplic,
@@ -491,5 +525,6 @@ export const Db = {
     UpdateReplicParticipants,
     UpdateReplicStatus,
     UpdateReplicWinner,
-    VoteReplic
+    VoteReplic,
+    GetWinnerByVotes
 };

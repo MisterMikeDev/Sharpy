@@ -47,7 +47,9 @@ export default new SlashCommandStructure({
             Config.DiscordBot.EchoesOfTalent.roles.Programador,
             Config.DiscordBot.EchoesOfTalent.roles.Admin,
             Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
-            Config.DiscordBot.EchoesOfTalent.roles.Moderator
+            Config.DiscordBot.EchoesOfTalent.roles.Moderator,
+            Config.DiscordBot.EchoesOfTalent.roles.Ayudante,
+            Config.DiscordBot.EchoesOfTalent.roles.Staff
         ];
 
         const permissions =
@@ -69,7 +71,7 @@ export default new SlashCommandStructure({
             );
         }
 
-        if (!hasRequiredPermissions && !hasRequiredRoles) {
+        if (!(hasRequiredRoles || hasRequiredPermissions)) {
             return await interaction.followUp({
                 content: `${Emojis.Util.No} | No puedes iniciar una lista de karaoke si hay un duelo en curso.`
             });

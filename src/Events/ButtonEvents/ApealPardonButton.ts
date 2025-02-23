@@ -21,7 +21,9 @@ export const buttonEvent: ButtonEvent = {
             Config.DiscordBot.EchoesOfTalent.roles.Programador,
             Config.DiscordBot.EchoesOfTalent.roles.Admin,
             Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
-            Config.DiscordBot.EchoesOfTalent.roles.Moderator
+            Config.DiscordBot.EchoesOfTalent.roles.Moderator,
+            Config.DiscordBot.EchoesOfTalent.roles.Ayudante,
+            Config.DiscordBot.EchoesOfTalent.roles.Staff
         ];
 
         const permissions =
@@ -43,7 +45,7 @@ export const buttonEvent: ButtonEvent = {
             );
         }
 
-        if (!hasRequiredPermissions && !hasRequiredRoles) {
+        if (!(hasRequiredRoles || hasRequiredPermissions)) {
             return await interaction.followUp({
                 content: `${Emojis.Util.No} | No puedes usar este botón.`,
                 ephemeral: true

@@ -44,7 +44,9 @@ export const GetRandomUserCommand = async ({
         Config.DiscordBot.EchoesOfTalent.roles.Programador,
         Config.DiscordBot.EchoesOfTalent.roles.Admin,
         Config.DiscordBot.EchoesOfTalent.roles.Supervisor,
-        Config.DiscordBot.EchoesOfTalent.roles.Moderator
+        Config.DiscordBot.EchoesOfTalent.roles.Moderator,
+        Config.DiscordBot.EchoesOfTalent.roles.Ayudante,
+        Config.DiscordBot.EchoesOfTalent.roles.Staff
     ];
 
     const permissions =
@@ -66,7 +68,7 @@ export const GetRandomUserCommand = async ({
         );
     }
 
-    if (!hasRequiredPermissions && !hasRequiredRoles) {
+    if (!(hasRequiredRoles || hasRequiredPermissions)) {
         return await interaction.followUp({
             content: `${Emojis.Util.No} | No tienes los permisos necesarios para ejecutar este comando.`
         });
@@ -91,14 +93,18 @@ export const GetRandomUserCommand = async ({
         });
     }
 
-    const randomMember = members.random();
+    const filteredMembers = members.filter(
+        (member) =>
+            !member.user.bot &&
+            !member.roles.cache.has(Config.DiscordBot.EchoesOfTalent.roles.Staff)
+    );
+    const randomMember = filteredMembers.random();
 
-    if (!randomMember) {
+    if (!randomMember)
         return await interaction.followUp({
             content: `${Emojis.Util.No} | No se encontró un miembro aleatorio.`,
             ephemeral: true
         });
-    }
 
     await interaction.followUp({
         embeds: [
