@@ -9,7 +9,11 @@ export function CheckIfUserIsInKaraokeVoiceChat(member: GuildMember) {
         Config.DiscordBot.EchoesOfTalent.channels.Karaoke4,
         Config.DiscordBot.EchoesOfTalent.channels.Karaoke5,
         Config.DiscordBot.EchoesOfTalent.channels.Karaoke6,
-        Config.DiscordBot.EchoesOfTalent.channels.Karaoke7
+        Config.DiscordBot.EchoesOfTalent.channels.Karaoke7,
+        Config.DiscordBot.EchoesOfTalent.channels.BeatboxRap1,
+        Config.DiscordBot.EchoesOfTalent.channels.BeatboxRap2,
+        Config.DiscordBot.EchoesOfTalent.channels.BeatboxRap3,
+        Config.DiscordBot.EchoesOfTalent.channels.Stage
     ];
 
     const memberVoiceChannel = member.voice.channel;
