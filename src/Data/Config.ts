@@ -61,6 +61,7 @@ export const Config = {
                 apealVoice: "┗『🎙️』apeal-"
             },
             channels: {
+                Bienvenida: "1343425643379163218",
                 Anuncios: "1308057691356401677",
                 Rules: "1308056733905588344",
                 Presentacion: "1313300920502714379",

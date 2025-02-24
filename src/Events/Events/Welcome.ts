@@ -1,4 +1,4 @@
-import { GuildMember, TextChannel } from "discord.js";
+import { EmbedBuilder, GuildMember, TextChannel } from "discord.js";
 import { Event } from "../../Interfaces";
 import { Config } from "../../Data/Config";
 import { WelcomeEmbed } from "../../Helpers";
@@ -7,7 +7,10 @@ export const event: Event = {
     name: "guildMemberAdd",
     run: async (Sharpy, member: GuildMember) => {
         if (member.guild.id === Config.DiscordBot.EchoesOfTalent.id) {
-            const channel = (await Sharpy.channels.fetch(
+            const welcomeChannel = (await Sharpy.channels.fetch(
+                Config.DiscordBot.EchoesOfTalent.channels.Bienvenida
+            )) as TextChannel;
+            const generalChannel = (await Sharpy.channels.fetch(
                 Config.DiscordBot.EchoesOfTalent.channels.General
             )) as TextChannel;
 
@@ -15,7 +18,26 @@ export const event: Event = {
                 const user = member.user;
                 const embeds = [WelcomeEmbed(user)];
 
-                await channel.send({
+                await generalChannel.send({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setAuthor({
+                                name: user.globalName!,
+                                iconURL: user.displayAvatarURL()
+                            })
+                            .setDescription(
+                                `¡Bienvenido <@${member.id}> a **Echoes Of Talent**! 🎉`
+                            )
+                            .setColor("#550000")
+                            .setFooter({
+                                text: "Echoes Of Talent | Bienvenida",
+                                iconURL: Sharpy.user!.displayAvatarURL()
+                            })
+                            .setTimestamp()
+                    ]
+                });
+
+                await welcomeChannel.send({
                     content: `¡Bienvenido <@${member.id}> a 𝐄𝐂𝐇𝐎𝐄𝐒 𝐎𝐅 𝐓𝐀𝐋𝐄𝐍𝐓! 🎉`,
                     embeds
                 });
